@@ -51,7 +51,7 @@ export default function TechnologyPage() {
             </svg>
           </div>
           <h2 className="text-primary font-orbitron text-2xl font-bold mb-2">
-            Vtolution
+            StaticWing
           </h2>
           <p className="text-text font-inter">Loading...</p>
         </div>

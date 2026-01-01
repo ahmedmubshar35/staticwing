@@ -32,7 +32,7 @@ function LoadingWrapper({ children }: { children: React.ReactNode }) {
             </svg>
           </div>
           <h2 className="text-primary font-orbitron text-2xl font-bold mb-2">
-            Vtolution
+            StaticWing
           </h2>
           <p className="text-text font-inter">Initializing...</p>
         </div>

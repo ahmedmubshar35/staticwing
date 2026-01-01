@@ -48,7 +48,7 @@ export async function POST(req: Request) {
       : `<div class="message-box">${message}</div>`;
 
     const mailOptions = {
-      from: `Vtolution <${process.env.SMTP_USER}>`,
+      from: `StaticWing <${process.env.SMTP_USER}>`,
       to: process.env.EMAIL_RECEIVE,
       subject: subject,
       html: `

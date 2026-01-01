@@ -14,8 +14,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "VTOLUTION",
-  description: "VTOLUTION is a UK aerospace company, founded in Manchester in 2021, which has developed a novel VTOL architecture, known as StaticWing.",
+  title: "StaticWing | Advanced VTOL Technology",
+  description: "StaticWing is the most advanced VTOL platform in its class, featuring innovative thrust vectoring, extended range capabilities, and superior passenger comfort for urban air mobility.",
   keywords: ["VTOL", "StaticWing", "Aerospace", "Electric Aviation", "Urban Air Mobility", "Sustainable Flight"],
 };
 
