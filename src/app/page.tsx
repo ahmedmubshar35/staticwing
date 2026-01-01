@@ -1,0 +1,82 @@
+"use client";
+import { useEffect } from "react";
+import { usePassword } from "@/context/PasswordContext";
+import { useRouter } from "next/navigation";
+import Navbar from "@/components/ui/Navbar";
+import HeroSection from "@/components/sections/HeroSection";
+import ParallaxSection from "@/components/sections/ParallaxSection";
+import OverviewSection from "@/components/sections/OverviewSection";
+import TechnologyPreview from "@/components/sections/previews/TechnologyPreview";
+import ApplicationsPreview from "@/components/sections/previews/ApplicationsPreview";
+import ContactPreview from "@/components/sections/previews/ContactPreview";
+import Footer from "@/components/sections/Footer";
+import TeamPreview from "@/components/sections/previews/TeamPreview";
+
+
+export default function HomePage() {
+  const router = useRouter();
+
+  const { authorized, isLoading } = usePassword();
+
+  useEffect(() => {
+    // Only redirect if not loading and not authorized
+    if (!isLoading && !authorized) {
+      router.push('/password');
+    }
+  }, [authorized, isLoading, router]);
+
+  // Show loading screen while checking authorization
+  if (isLoading) {
+    return (
+      <div className="fixed inset-0 bg-background flex items-center justify-center">
+        <div className="text-center">
+          <div className="relative w-20 h-20 mx-auto mb-4">
+            <svg
+              className="animate-spin h-20 w-20 text-primary"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+            >
+              <circle
+                className="opacity-25"
+                cx="12"
+                cy="12"
+                r="10"
+                stroke="currentColor"
+                strokeWidth="4"
+              ></circle>
+              <path
+                className="opacity-75"
+                fill="currentColor"
+                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+              ></path>
+            </svg>
+          </div>
+          <h2 className="text-primary font-orbitron text-2xl font-bold mb-2">
+            Vtolution
+          </h2>
+          <p className="text-text font-inter">Loading...</p>
+        </div>
+      </div>
+    );
+  }
+
+  // Don't render content if not authorized
+  if (!authorized) {
+    return null;
+  }
+
+  return (
+    <div className="w-screen overflow-x-hidden">
+      <Navbar />
+      <HeroSection />
+      <ParallaxSection />
+      <OverviewSection />
+      <TechnologyPreview />
+      <ApplicationsPreview />
+      <TeamPreview />
+      <ContactPreview />
+      <Footer />
+    </div>
+  );
+}

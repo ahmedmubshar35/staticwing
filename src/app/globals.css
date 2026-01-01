@@ -1,0 +1,282 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@600;700;800&family=Rajdhani:wght@500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&family=Orbitron:wght@400..900&display=swap');
+@import "tailwindcss";
+
+
+:root {
+
+  /* ===== Primary Brand Colors ===== */
+  --primary: #3B82F6;         /* Modern Indigo - Tech & Innovation */
+  --background: #0A0A0F;      /* Ultra-clean slate background */
+  --surface: #1A1B23;         /* Pure white surfaces */
+  --text: #D1D5DB;        /* Soft gray text for readability */
+  --accent: #22D3EE;          /* Vibrant Cyan - Energy & Future */
+
+}
+
+@theme inline {
+  --color-primary: #3B82F6;
+  --color-background: #0A0A0F;
+  --color-surface: #1A1B23;
+  --color-text: #D1D5DB;
+  --color-accent: #22D3EE;
+  
+
+  --font-audiowide: 'Audiowide', sans-serif;                /* Headings / Titles */
+  --font-orbitron: 'Orbitron', sans-serif;              /* Futuristic / Tech */
+
+  --font-inter: 'Inter', sans-serif;                    /* Headings / Titles */
+  --font-montserrat: 'Montserrat', sans-serif;          /* Body / Paragraphs */
+  --font-rajdhani: 'Rajdhani', sans-serif;              /* Accent / Numbers */
+}
+
+/* @media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+} */
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Custom utility for 3D flip effect */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+/* ===== Landing Page Animations ===== */
+
+/* Grid move animation for hero background */
+@keyframes gridMove {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(60px, 60px);
+  }
+}
+
+/* Airflow line animation */
+@keyframes flowLine {
+  0% {
+    stroke-dashoffset: 30;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+.airflow-line {
+  stroke-dasharray: 20 10;
+  animation: flowLine 2s linear infinite;
+}
+
+/* Slow spin for decorative elements */
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 20s linear infinite;
+}
+
+@keyframes spin-reverse {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+.animate-spin-reverse {
+  animation: spin-reverse 15s linear infinite;
+}
+
+/* Flow animation for SVG paths */
+@keyframes flow {
+  0% {
+    stroke-dashoffset: 100;
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 0;
+  }
+}
+
+.animate-flow {
+  stroke-dasharray: 100;
+  animation: flow 3s ease-in-out infinite;
+}
+
+/* Fade in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+/* Chaotic flow animations for comparison */
+@keyframes chaotic1 {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(5px);
+  }
+}
+
+@keyframes chaotic2 {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes chaotic3 {
+  0%, 100% {
+    transform: translateX(0) translateY(0);
+  }
+  50% {
+    transform: translateX(-3px) translateY(3px);
+  }
+}
+
+.animate-chaotic1 {
+  animation: chaotic1 1.5s ease-in-out infinite;
+}
+
+.animate-chaotic2 {
+  animation: chaotic2 1.2s ease-in-out infinite;
+}
+
+.animate-chaotic3 {
+  animation: chaotic3 1.8s ease-in-out infinite;
+}
+
+/* Clean flow animation */
+@keyframes cleanFlow {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-cleanFlow {
+  animation: cleanFlow 1s ease-out forwards;
+}
+
+/* Draw line animation */
+@keyframes drawLine {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.animate-drawLine {
+  animation: drawLine 2s ease-out forwards;
+}
+
+.animate-drawLine2 {
+  animation: drawLine 2s ease-out 0.5s forwards;
+}
+
+/* Structure draw animation */
+@keyframes drawStructure {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.animate-drawStructure {
+  animation: drawStructure 1.5s ease-out forwards;
+}
+
+/* Load pulse animation */
+@keyframes loadPulse {
+  0%, 100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.animate-loadPulse {
+  animation: loadPulse 2s ease-in-out infinite;
+}
+
+/* Circle fill animation */
+@keyframes fillCircle {
+  from {
+    stroke-dasharray: 0 283;
+  }
+}
+
+.animate-fillCircle {
+  animation: fillCircle 1.5s ease-out forwards;
+}
+
+.animate-fillCircle2 {
+  animation: fillCircle 1.5s ease-out 0.3s forwards;
+}
+
+.animate-fillCircle3 {
+  animation: fillCircle 1.5s ease-out 0.6s forwards;
+}
+
+/* Radial gradient background utility */
+.bg-gradient-radial {
+  background: radial-gradient(circle at center, var(--tw-gradient-from), var(--tw-gradient-via), var(--tw-gradient-to));
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+}
