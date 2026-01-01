@@ -152,7 +152,7 @@ export async function POST(req: Request) {
                 <body>
                     <div class="email-container">
                         <div class="header">
-                            <h1>VTOLUTION</h1>
+                            <h1>StaticWing</h1>
                             <p>New Contact Form Submission</p>
                         </div>
                         
@@ -180,7 +180,7 @@ export async function POST(req: Request) {
                         </div>
                         
                         <div class="footer">
-                            <p><strong>VTOLUTION Ltd.</strong></p>
+                            <p><strong>StaticWing | VTOLUTION</strong></p>
                             <p>Manchester Science Park | Manchester, UK M15 6SE</p>
                             <p style="margin-top: 10px; color: #a0a0a0;">
                                 This is an automated message from your website contact form.
