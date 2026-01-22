@@ -8,6 +8,7 @@ import Navbar from "@/components/ui/Navbar";
 import Footer from "@/components/sections/Footer";
 import DesignEvolution from "@/components/sections/DesignEvolution";
 import TechnicalDeepDive from "@/components/sections/TechnicalDeepDive";
+import CoreInnovationSection from "@/components/sections/CoreInnovationSection";
 
 
 export default function StaticWingPage() {
@@ -160,6 +161,7 @@ export default function StaticWingPage() {
                 </div>
             </section>
 
+            <CoreInnovationSection />
             <DesignEvolution />
             <TechnicalDeepDive />
 
