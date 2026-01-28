@@ -98,7 +98,6 @@ export default function TeamSection() {
                     <span className="font-orbitron text-xl sm:text-2xl font-bold text-white">PO</span>
                   </div>
                   <div className="flex-1 min-w-0">
-                    <span className="inline-block px-2 py-0.5 bg-accent/20 rounded text-xs font-rajdhani text-accent uppercase tracking-wider mb-2">Co-Founder</span>
                     <h3 className="font-orbitron text-lg sm:text-xl font-bold text-white mb-1">Peter Oakland</h3>
                     <p className="font-rajdhani text-sm text-text/50 uppercase tracking-wider mb-3">IP & Research Lead</p>
                     <p className="font-inter text-sm text-text/70 leading-relaxed">
@@ -340,6 +339,7 @@ export default function TeamSection() {
                   { name: "UCL", type: "research" },
                   { name: "Cranfield University", type: "research" },
                   { name: "Schuebeler", type: "tech" },
+                  { name: "Blue Bear Systems", type: "tech" },
                 ].map((partner) => (
                   <div
                     key={partner.name}
