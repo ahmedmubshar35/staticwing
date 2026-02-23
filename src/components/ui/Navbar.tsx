@@ -11,6 +11,7 @@ const navLinks = [
   { name: "Applications", href: "/applications" },
   { name: "Team", href: "/team" },
   { name: "Deep Dive", href: "/deep-dive" },
+  { name: "3D Render", href: "/3d-render" },
   { name: "Request Demo", href: "/request-demo" },
   { name: "Contact", href: "/contact" },
 ];
