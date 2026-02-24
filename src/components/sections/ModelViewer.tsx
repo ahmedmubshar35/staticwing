@@ -234,6 +234,19 @@ function LoadingFallback() {
 export default function ModelViewer() {
   const [autoRotate, setAutoRotate] = useState(true);
   const [activeHotspot, setActiveHotspot] = useState<string | null>(null);
+  const canvasWrapperRef = useRef<HTMLDivElement>(null);
+  const [inView, setInView] = useState(false);
+
+  useEffect(() => {
+    const el = canvasWrapperRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => setInView(entry.isIntersecting),
+      { rootMargin: "200px" }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   const handleHotspotClick = useCallback(
     (id: string) => {
@@ -288,12 +301,14 @@ export default function ModelViewer() {
 
         <div>
           <motion.div
+            ref={canvasWrapperRef}
             initial={{ opacity: 0, scale: 0.98 }}
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
             className="relative w-full aspect-[16/10] rounded-2xl overflow-hidden border border-white/10 bg-black/40"
           >
+            {inView ? (
             <Suspense fallback={<LoadingFallback />}>
               <Canvas
                 camera={{ position: [0, 3, 8], fov: 45 }}
@@ -341,6 +356,9 @@ export default function ModelViewer() {
                 />
               </Canvas>
             </Suspense>
+            ) : (
+              <LoadingFallback />
+            )}
 
             <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-black/30 to-transparent pointer-events-none" />
 

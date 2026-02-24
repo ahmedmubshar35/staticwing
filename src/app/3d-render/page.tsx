@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import Navbar from "@/components/ui/Navbar";
 import PageHero from "@/components/ui/PageHero";
 import ModelViewer from "@/components/sections/ModelViewer";
+import ComponentsExploded from "@/components/sections/ComponentsExploded";
 import Footer from "@/components/sections/Footer";
 
 export default function ThreeDRenderPage() {
@@ -66,6 +67,7 @@ export default function ThreeDRenderPage() {
         subtitle="Explore the StaticWing design in full 3D. Rotate, zoom, and inspect every detail of the airframe."
       />
       <ModelViewer />
+      <ComponentsExploded />
       <Footer />
     </div>
   );
