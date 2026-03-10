@@ -7,6 +7,7 @@ import Navbar from "@/components/ui/Navbar";
 import PageHero from "@/components/ui/PageHero";
 import ModelViewer from "@/components/sections/ModelViewer";
 import ComponentsExploded from "@/components/sections/ComponentsExploded";
+import LogisticsViewer from "@/components/sections/LogisticsViewer";
 import Footer from "@/components/sections/Footer";
 
 export default function ThreeDRenderPage() {
@@ -68,6 +69,7 @@ export default function ThreeDRenderPage() {
       />
       <ModelViewer />
       <ComponentsExploded />
+      <LogisticsViewer />
       <Footer />
     </div>
   );
