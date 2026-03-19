@@ -73,13 +73,12 @@ export default function FeatureSection3() {
               viewport={{ once: true }}
               className="font-inter text-lg md:text-xl text-text leading-relaxed mb-10"
             >
-              This design produces a{" "}
-              <span className="text-white font-semibold">single, minimal downwash axis</span>{" "}
-              that is not perpendicular to the ground. By eliminating multi-axis downwash,
-              our UAV{" "}
-              <span className="text-accent font-semibold">avoids ground damage</span>{" "}
-              and requires{" "}
-              <span className="text-white font-semibold">no reinforced landing sites</span>.
+              This configuration produces a{" "}
+              <span className="text-white font-semibold">single, controlled downwash axis</span>{" "}
+              that is inclined relative to the ground plane. The absence of multi-axis downwash{" "}
+              <span className="text-accent font-semibold">minimizes ground disturbance</span>{" "}
+              and allows operations without{" "}
+              <span className="text-white font-semibold">specialized or reinforced landing infrastructure</span>.
             </motion.p>
 
             {/* Comparison Cards */}

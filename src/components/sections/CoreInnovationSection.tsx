@@ -8,9 +8,9 @@ import { motion, AnimatePresence } from "motion/react";
 const innovationSteps = [
     {
         id: 1,
-        tag: "Dual Engine Setup",
+        tag: "Dual Electric Fan Setup",
         title: "Initial Activation",
-        description: "Primary and secondary engines activate to generate the initial high-speed flowstream (FS1) directed at the aerofoil.",
+        description: "Primary and secondary electric fans activate to generate the initial high-speed flowstream (FS1) directed at the aerofoil.",
         highlight: "FS1",
         highlightLabel: "Flowstream One",
         startTime: 0,
@@ -30,7 +30,7 @@ const innovationSteps = [
         id: 3,
         tag: "The Solution",
         title: "The Shrouding Effect",
-        description: "Engine 2 (FS2) activates to shield the main jet. This 'shrouding' breaks the pressure barrier, allowing full expansion.",
+        description: "Electric fan 2 (FS2) activates to shield the main jet. This 'shrouding' breaks the pressure barrier, allowing full expansion.",
         highlight: "FS2",
         highlightLabel: "Shielding Flowstream",
         startTime: 32,

@@ -77,8 +77,8 @@ export default function HeroSection() {
           transition={{ duration: 1, delay: 0.4, ease: "easeOut" }}
           className="font-inter text-lg md:text-xl text-text max-w-2xl mb-8 leading-relaxed"
         >
-          Revolutionary VTOL technology delivering unmatched payload capacity,
-          whisper-quiet operation, and zero downwash interference.
+          Next-generation VTOL technology enabling high payload performance, low acoustic signature, and minimal downwash
+          disturbance.
         </motion.p>
 
         {/* CTA Button */}

@@ -111,7 +111,7 @@ export default function StaticWingPage() {
                     </h2>
                     <div className="prose prose-lg prose-invert text-text/90 font-inter mx-auto">
                         <p className="mb-6">
-                            The static wing is a revolutionary configuration designed to generate lift with minimal or zero forward airspeed. Unlike traditional fixed wings that rely on velocity, the Static Wing exploits controlled airflow redirection and pressure differentials.
+                            The StaticWing is an unconventional lifting configuration designed to produce aerodynamic lift at low or near-zero forward velocity. In contrast to traditional fixed-wing aircraft, which rely on translational airflow, the StaticWing leverages directed airflow and engineered pressure gradients across the lifting surfaces. As a result, the system can achieve hover-capable lift generation, extremely short takeoff distances, and elevated lift coefficients without operating at extreme angles of attack.
                         </p>
                         <p>
                             This allows for hover and near-hover lift generation, extremely short takeoffs, and high lift coefficients without excessive angles of attack.

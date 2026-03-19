@@ -73,12 +73,13 @@ export default function FeatureSection2() {
               viewport={{ once: true }}
               className="font-inter text-lg md:text-xl text-text leading-relaxed mb-10"
             >
-              Its frame, reinforced and powered, carries a total weight of{" "}
-              <span className="text-white font-semibold">1,900 kilograms</span>, including
-              all onboard batteries. Yet, when fully loaded, the takeoff weight reaches{" "}
-              <span className="text-white font-semibold">2,900 kilograms</span>, allowing
-              it to lift a payload of over{" "}
-              <span className="text-accent font-semibold">1,000 kilograms</span>.
+              The reinforced airframe and integrated propulsion system support a{" "}
+              <span className="text-white font-semibold">structural weight of approximately 1,900 kg</span>, including
+              onboard avionics and battery systems. At{" "}
+              <span className="text-white font-semibold">maximum takeoff weight (MTOW) of 2,900 kg</span>, the platform is
+              capable of carrying a{" "}
+              <span className="text-accent font-semibold">payload exceeding 1,000 kg</span>, demonstrating substantial
+              heavy-lift capability for VTOL operations.
             </motion.p>
 
             {/* Weight Breakdown */}

@@ -40,6 +40,20 @@ const evolutionStages = [
         description: "The mature static wing design, fully optimized for high-efficiency lift generation and stability.",
         year: "Phase 5"
     },
+    {
+        id: 6,
+        image: "/static-wing/design-evolution/5.png",
+        title: "Guidance Navigation & Control",
+        description: "Development of guidance navigation and control scheme for this innovative concept.",
+        year: "Phase 6"
+    },
+    {
+        id: 7,
+        image: "/static-wing/design-evolution/5.png",
+        title: "Performance Optimization through 6DoF",
+        description: "Performance optimization through six degrees of freedom (6DoF) simulation and analysis.",
+        year: "Phase 7"
+    },
 ];
 
 export default function DesignEvolution() {

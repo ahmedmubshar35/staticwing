@@ -78,9 +78,7 @@ export default function ParallaxSection() {
                 viewport={{ once: true }}
                 className="font-inter text-text text-lg leading-relaxed mb-8"
               >
-                StaticWing represents a breakthrough in VTOL technology. Our unique
-                architecture eliminates traditional rotor downwash while delivering
-                unprecedented payload capacity and whisper-quiet operation.
+                StaticWing represents a significant advancement in VTOL aircraft architecture. The configuration eliminates conventional rotor-induced downwash while maintaining high payload capability and a low acoustic signature during operation.
               </motion.p>
 
               {/* Key Features List */}
@@ -98,8 +96,8 @@ export default function ParallaxSection() {
                     </svg>
                   </div>
                   <div>
-                    <h4 className="font-rajdhani text-white font-semibold text-lg">Zero Downwash Impact</h4>
-                    <p className="font-inter text-text/70 text-sm">Operates safely near people and structures without disruptive airflow</p>
+                    <h4 className="font-rajdhani text-white font-semibold text-lg">Minimal Downwash Effects</h4>
+                    <p className="font-inter text-text/70 text-sm">The propulsion architecture mitigates rotor downwash typically associated with conventional VTOL systems, enabling safer operations near personnel, structures, and sensitive environments.</p>
                   </div>
                 </motion.div>
 
@@ -116,8 +114,8 @@ export default function ParallaxSection() {
                     </svg>
                   </div>
                   <div>
-                    <h4 className="font-rajdhani text-white font-semibold text-lg">Ultra-Quiet Operation</h4>
-                    <p className="font-inter text-text/70 text-sm">64dB at 100m enables urban operations without noise pollution</p>
+                    <h4 className="font-rajdhani text-white font-semibold text-lg">Low Acoustic Signature</h4>
+                    <p className="font-inter text-text/70 text-sm">The system achieves an acoustic level of approximately <strong className="text-white">64 dB at 100 m</strong>, supporting operations in noise-sensitive environments.</p>
                   </div>
                 </motion.div>
 
@@ -134,8 +132,8 @@ export default function ParallaxSection() {
                     </svg>
                   </div>
                   <div>
-                    <h4 className="font-rajdhani text-white font-semibold text-lg">Heavy Lift Capability</h4>
-                    <p className="font-inter text-text/70 text-sm">1000+ kg payload capacity for commercial and industrial applications</p>
+                    <h4 className="font-rajdhani text-white font-semibold text-lg">High Payload Capability</h4>
+                    <p className="font-inter text-text/70 text-sm">The architecture is designed to support <strong className="text-white">payload capacities exceeding 1,000 kg</strong>, enabling heavy-lift missions across logistics, industrial support, and specialized operational applications.</p>
                   </div>
                 </motion.div>
               </div>

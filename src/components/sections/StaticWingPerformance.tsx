@@ -29,17 +29,17 @@ export default function StaticWingPerformance() {
                     <FeatureItem
                         number="01"
                         title="Extended Range"
-                        desc="Low-drag cruise configuration reduces power requirements, enabling competitive inter-city range compared to conventional VTOLs."
+                        desc="The aerodynamically optimized low-drag cruise configuration reduces propulsion power requirements, improving range performance compared with conventional VTOL systems."
                     />
                     <FeatureItem
                         number="02"
                         title="Agile Turns"
-                        desc="Coordinated thrust vectoring allows for minimal skid-to-turn radii without aggressive banking, ideal for urban environments."
+                        desc="A coordinated thrust vectoring mechanism enables tight turning performance with limited bank angles, providing enhanced maneuverability for operations in confined urban environment."
                     />
                     <FeatureItem
                         number="03"
                         title="Passenger Comfort"
-                        desc="Short takeoff phases and smooth lift transitions significantly reduce vibration and motion sickness."
+                        desc="Optimized short duration takeoff sequences and smooth lift-vector transitions decrease vibration loads and improve passenger ride quality."
                     />
                 </div>
             </div>

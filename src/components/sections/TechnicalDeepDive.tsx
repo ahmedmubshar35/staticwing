@@ -40,8 +40,7 @@ export default function TechnicalDeepDive() {
                             Airfoil <span className="text-accent">Parametrization</span>
                         </h3>
                         <p className="font-inter text-text text-lg leading-relaxed mb-6">
-                            The core of the Static Wing efficiency lies in its highly specific airfoil parametrization.
-                            Using advanced algorithms, we've optimized the curvature to maintain attached flow even at high angles of flow incidence.
+                            The core performance of the StaticWing architecture is derived from <span className="text-white font-semibold">precisely parameterized airfoil geometry</span>. Using advanced optimization algorithms, the airfoil curvatures has been refined to maintain <span className="text-white font-semibold">boundary-layer attachment under high angles of flow incidence</span>.
                         </p>
                         <ul className="space-y-3 font-rajdhani text-white/80">
                             <li className="flex items-center gap-3">
@@ -168,7 +167,7 @@ export default function TechnicalDeepDive() {
                                 Custom <br />Propulsion
                             </h3>
                             <p className="font-inter text-text leading-relaxed">
-                                The heartbeat of the Static Wing. Our custom-designed propulsion system is integrated directly into the wing structure, minimizing parasitic drag while maximizing thrust efficiency.
+                                The StaticWing&apos;s propulsion system is <span className="text-white font-semibold">structurally integrated into the wing architecture</span>, reducing parasitic aerodynamic losses while optimizing <span className="text-white font-semibold">thrust generation and overall propulsion efficiency</span>.
                             </p>
                         </div>
                         <div className="lg:col-span-3">
