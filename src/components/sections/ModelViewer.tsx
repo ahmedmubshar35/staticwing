@@ -22,14 +22,14 @@ const hotspots: Hotspot[] = [
   {
     id: "vtol-fans",
     label: "VTOL Lift Fans",
-    position: [0.39, 2.36, 2.24],
+    position: [-4.50, 0.46, 0.07],
     description:
       "Tandem mounted ducted fans motors providing vertical lift. The FS2 shrouding effect enables full jet expansion and continuous thrust.",
   },
   {
     id: "rear-thrust",
     label: "Rear Propulsion",
-    position: [-4.50, 0.46, 0.07],
+    position: [0.39, 2.36, 2.24],
     description:
       "Dual counter-thrust electric motors for forward movement, pitch stability, yawing maneuvers and VTOL-to-cruise transition.",
   },
