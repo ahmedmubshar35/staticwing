@@ -21,6 +21,13 @@ export default function HeroSection() {
     setIsLoaded(true);
   }, []);
 
+  const handleDiscoverClick = () => {
+    window.scrollTo({
+      top: window.innerHeight,
+      behavior: "smooth",
+    });
+  };
+
   return (
     <section ref={sectionRef} className="relative h-screen w-full overflow-hidden">
       {/* Video Background with Parallax */}
@@ -87,7 +94,10 @@ export default function HeroSection() {
           animate={isLoaded ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 1, delay: 0.6, ease: "easeOut" }}
         >
-          <button className="group relative px-8 py-4 font-rajdhani font-semibold text-lg tracking-wider uppercase overflow-hidden rounded-sm">
+          <button
+            onClick={handleDiscoverClick}
+            className="group relative px-8 py-4 font-rajdhani font-semibold text-lg tracking-wider uppercase overflow-hidden rounded-sm"
+          >
             <span className="relative z-10 text-white group-hover:text-background transition-colors duration-300">
               Discover StaticWing
             </span>
