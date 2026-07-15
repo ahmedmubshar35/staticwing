@@ -1,7 +1,134 @@
 "use client";
 
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import { motion, useScroll, useTransform } from "motion/react";
+
+const avatarSizeClasses = {
+  lg: "w-16 h-16 sm:w-20 sm:h-20",
+  md: "w-12 h-12",
+  sm: "w-10 h-10",
+} as const;
+
+const avatarIconSizeClasses = {
+  lg: "w-8 h-8 sm:w-10 sm:h-10",
+  md: "w-6 h-6",
+  sm: "w-5 h-5",
+} as const;
+
+function TeamAvatar({
+  image,
+  alt,
+  size,
+  containerClassName,
+  iconClassName,
+}: {
+  image?: string;
+  alt: string;
+  size: keyof typeof avatarSizeClasses;
+  containerClassName: string;
+  iconClassName: string;
+}) {
+  return (
+    <div
+      className={`relative ${avatarSizeClasses[size]} rounded-full flex items-center justify-center shrink-0 overflow-hidden ${containerClassName}`}
+    >
+      {image ? (
+        <Image src={image} alt={alt} fill className="object-cover" />
+      ) : (
+        <svg className={`${avatarIconSizeClasses[size]} ${iconClassName}`} fill="currentColor" viewBox="0 0 24 24">
+          <path d="M12 12c2.761 0 5-2.239 5-5s-2.239-5-5-5-5 2.239-5 5 2.239 5 5 5zm0 2c-3.866 0-7 2.239-7 5v2h14v-2c0-2.761-3.134-5-7-5z" />
+        </svg>
+      )}
+    </div>
+  );
+}
+
+const partnerLogos = [
+  { name: "Salford University", type: "research" },
+  { name: "UCL", type: "research" },
+  { name: "Cranfield University", type: "research" },
+  { name: "Schuebeler", type: "tech" },
+  { name: "Blue Bear Systems", type: "tech" },
+] as const;
+
+function PartnerSlider() {
+  const trackRef = useRef<HTMLDivElement>(null);
+  const [isPaused, setIsPaused] = useState(false);
+
+  const scrollByAmount = (direction: 1 | -1) => {
+    const el = trackRef.current;
+    if (!el) return;
+    el.scrollBy({ left: direction * 200, behavior: "smooth" });
+  };
+
+  useEffect(() => {
+    if (isPaused) return;
+    const interval = setInterval(() => {
+      const el = trackRef.current;
+      if (!el) return;
+      const atEnd = el.scrollLeft + el.clientWidth >= el.scrollWidth - 4;
+      if (atEnd) {
+        el.scrollTo({ left: 0, behavior: "smooth" });
+      } else {
+        el.scrollBy({ left: 160, behavior: "smooth" });
+      }
+    }, 2600);
+    return () => clearInterval(interval);
+  }, [isPaused]);
+
+  return (
+    <div
+      className="relative"
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
+      onTouchStart={() => setIsPaused(true)}
+    >
+      {/* Edge fades */}
+      <div className="pointer-events-none absolute inset-y-0 left-0 w-8 bg-linear-to-r from-surface/80 to-transparent z-10" />
+      <div className="pointer-events-none absolute inset-y-0 right-0 w-8 bg-linear-to-l from-surface/80 to-transparent z-10" />
+
+      <div
+        ref={trackRef}
+        className="flex gap-3 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-1 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+      >
+        {partnerLogos.map((partner) => (
+          <div
+            key={partner.name}
+            className="flex items-center gap-2 px-4 py-3 bg-background/50 rounded-lg border border-white/5 whitespace-nowrap shrink-0 snap-start"
+          >
+            <div className={`w-2 h-2 rounded-full ${partner.type === "research" ? "bg-accent" : "bg-primary"}`} />
+            <span className="font-rajdhani text-xs sm:text-sm text-text/70">{partner.name}</span>
+          </div>
+        ))}
+      </div>
+
+      {/* Controls */}
+      <div className="flex items-center justify-end gap-2 mt-3">
+        <button
+          type="button"
+          onClick={() => scrollByAmount(-1)}
+          aria-label="Previous partners"
+          className="w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white/10 hover:border-accent/30 transition-colors duration-300"
+        >
+          <svg className="w-4 h-4 text-text/70" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+          </svg>
+        </button>
+        <button
+          type="button"
+          onClick={() => scrollByAmount(1)}
+          aria-label="Next partners"
+          className="w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white/10 hover:border-accent/30 transition-colors duration-300"
+        >
+          <svg className="w-4 h-4 text-text/70" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  );
+}
 
 export default function TeamSection() {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -65,9 +192,12 @@ export default function TeamSection() {
             >
               <div className="relative h-full bg-linear-to-br from-primary/10 via-surface/30 to-transparent backdrop-blur-sm rounded-2xl border border-primary/20 p-6 hover:border-primary/40 transition-all duration-300">
                 <div className="flex items-start gap-5">
-                  <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-linear-to-br from-primary to-accent flex items-center justify-center shrink-0">
-                    <span className="font-orbitron text-xl sm:text-2xl font-bold text-white">NB</span>
-                  </div>
+                  <TeamAvatar
+                    alt="Neil Baxter"
+                    size="lg"
+                    containerClassName="bg-linear-to-br from-primary to-accent ring-2 ring-white/10"
+                    iconClassName="text-white/90"
+                  />
                   <div className="flex-1 min-w-0">
                     <span className="inline-block px-2 py-0.5 bg-primary/20 rounded text-xs font-rajdhani text-primary uppercase tracking-wider mb-2">Founder</span>
                     <h3 className="font-orbitron text-lg sm:text-xl font-bold text-white mb-1">Neil Baxter</h3>
@@ -94,9 +224,12 @@ export default function TeamSection() {
             >
               <div className="relative h-full bg-linear-to-bl from-accent/10 via-surface/30 to-transparent backdrop-blur-sm rounded-2xl border border-accent/20 p-6 hover:border-accent/40 transition-all duration-300">
                 <div className="flex items-start gap-5">
-                  <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-linear-to-br from-accent to-primary flex items-center justify-center shrink-0">
-                    <span className="font-orbitron text-xl sm:text-2xl font-bold text-white">PO</span>
-                  </div>
+                  <TeamAvatar
+                    alt="Peter Oakland"
+                    size="lg"
+                    containerClassName="bg-linear-to-br from-accent to-primary ring-2 ring-white/10"
+                    iconClassName="text-white/90"
+                  />
                   <div className="flex-1 min-w-0">
                     <h3 className="font-orbitron text-lg sm:text-xl font-bold text-white mb-1">Peter Oakland</h3>
                     <p className="font-rajdhani text-sm text-text/50 uppercase tracking-wider mb-3">IP & Research Lead</p>
@@ -145,9 +278,12 @@ export default function TeamSection() {
             >
               <div className="relative h-full bg-surface/30 backdrop-blur-sm rounded-xl border border-white/10 p-5 hover:border-accent/30 transition-all duration-300">
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-xl bg-accent/10 border border-accent/20 flex items-center justify-center shrink-0">
-                    <span className="font-orbitron text-sm font-bold text-accent">OS</span>
-                  </div>
+                  <TeamAvatar
+                    alt="Prof. Oliviu Sugar-Gabor"
+                    size="md"
+                    containerClassName="bg-accent/10 border border-accent/20 ring-2 ring-accent/10"
+                    iconClassName="text-accent"
+                  />
                   <div className="flex-1 min-w-0">
                     <h3 className="font-orbitron text-base sm:text-lg font-bold text-white mb-1">Prof. Oliviu Sugar-Gabor</h3>
                     <p className="font-rajdhani text-xs text-accent uppercase tracking-wider mb-3">Aerodynamics Specialist</p>
@@ -173,9 +309,12 @@ export default function TeamSection() {
             >
               <div className="relative h-full bg-surface/30 backdrop-blur-sm rounded-xl border border-white/10 p-5 hover:border-primary/30 transition-all duration-300">
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center shrink-0">
-                    <span className="font-orbitron text-sm font-bold text-primary">PA</span>
-                  </div>
+                  <TeamAvatar
+                    alt="Prof. Pedram Asef"
+                    size="md"
+                    containerClassName="bg-primary/10 border border-primary/20 ring-2 ring-primary/10"
+                    iconClassName="text-primary"
+                  />
                   <div className="flex-1 min-w-0">
                     <h3 className="font-orbitron text-base sm:text-lg font-bold text-white mb-1">Prof. Pedram Asef</h3>
                     <p className="font-rajdhani text-xs text-primary uppercase tracking-wider mb-3">Propulsion Specialist</p>
@@ -224,9 +363,12 @@ export default function TeamSection() {
             >
               <div className="relative h-full bg-surface/20 backdrop-blur-sm rounded-xl border border-white/10 p-5 hover:border-white/20 transition-all duration-300">
                 <div className="flex items-center gap-4 mb-3">
-                  <div className="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center">
-                    <span className="font-orbitron text-xs font-bold text-white/60">SC</span>
-                  </div>
+                  <TeamAvatar
+                    alt="Simon Chadowitz"
+                    size="sm"
+                    containerClassName="bg-white/5 border border-white/10 ring-2 ring-white/5"
+                    iconClassName="text-white/60"
+                  />
                   <div>
                     <h3 className="font-orbitron text-sm sm:text-base font-bold text-white">Simon Chadowitz</h3>
                     <p className="font-rajdhani text-xs text-text/40 uppercase tracking-wider">Investor & Advisor</p>
@@ -250,9 +392,12 @@ export default function TeamSection() {
             >
               <div className="relative h-full bg-surface/20 backdrop-blur-sm rounded-xl border border-white/10 p-5 hover:border-white/20 transition-all duration-300">
                 <div className="flex items-center gap-4 mb-3">
-                  <div className="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center">
-                    <span className="font-orbitron text-xs font-bold text-white/60">SL</span>
-                  </div>
+                  <TeamAvatar
+                    alt="Saul Henry Lewin"
+                    size="sm"
+                    containerClassName="bg-white/5 border border-white/10 ring-2 ring-white/5"
+                    iconClassName="text-white/60"
+                  />
                   <div>
                     <h3 className="font-orbitron text-sm sm:text-base font-bold text-white">Saul Henry Lewin</h3>
                     <p className="font-rajdhani text-xs text-text/40 uppercase tracking-wider">Business Advisor</p>
@@ -333,23 +478,7 @@ export default function TeamSection() {
                 Collaborating with leading universities and technology partners to push the boundaries of VTOL innovation.
               </p>
 
-              <div className="grid grid-cols-2 gap-2">
-                {[
-                  { name: "Salford University", type: "research" },
-                  { name: "UCL", type: "research" },
-                  { name: "Cranfield University", type: "research" },
-                  { name: "Schuebeler", type: "tech" },
-                  { name: "Blue Bear Systems", type: "tech" },
-                ].map((partner) => (
-                  <div
-                    key={partner.name}
-                    className="flex items-center gap-2 px-3 py-2.5 bg-background/50 rounded-lg border border-white/5"
-                  >
-                    <div className={`w-2 h-2 rounded-full ${partner.type === "research" ? "bg-accent" : "bg-primary"}`} />
-                    <span className="font-rajdhani text-xs sm:text-sm text-text/70">{partner.name}</span>
-                  </div>
-                ))}
-              </div>
+              <PartnerSlider />
             </div>
           </motion.div>
         </div>

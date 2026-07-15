@@ -76,10 +76,6 @@ export default function FeatureSection4() {
                 <div className="absolute inset-0 bg-linear-to-t from-background/50 via-transparent to-transparent" />
               </motion.div>
 
-              {/* Corner accents */}
-              <div className="absolute -top-3 -left-3 w-12 h-12 border-l-2 border-t-2 border-green-500/50" />
-              <div className="absolute -bottom-3 -right-3 w-12 h-12 border-r-2 border-b-2 border-green-500/50" />
-
               {/* Floating eco badge */}
               <motion.div
                 animate={{ y: [0, -6, 0] }}

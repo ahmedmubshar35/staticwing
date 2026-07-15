@@ -361,11 +361,6 @@ export default function ModelViewer() {
             )}
 
             <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-black/30 to-transparent pointer-events-none" />
-
-            <div className="absolute top-3 left-3 w-6 h-6 border-l border-t border-accent/30 pointer-events-none" />
-            <div className="absolute top-3 right-3 w-6 h-6 border-r border-t border-accent/30 pointer-events-none" />
-            <div className="absolute bottom-3 left-3 w-6 h-6 border-l border-b border-accent/30 pointer-events-none" />
-            <div className="absolute bottom-3 right-3 w-6 h-6 border-r border-b border-accent/30 pointer-events-none" />
           </motion.div>
 
         </div>

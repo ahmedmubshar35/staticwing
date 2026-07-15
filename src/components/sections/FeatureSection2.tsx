@@ -40,7 +40,7 @@ export default function FeatureSection2() {
       </div>
 
       <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-8 py-20">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.25fr] gap-12 lg:gap-16 items-center">
           {/* Left - Content */}
           <motion.div
             className="lg:pr-8"
@@ -66,21 +66,38 @@ export default function FeatureSection2() {
               BUILT TO <span className="text-primary">LIFT</span>
             </motion.h2>
 
-            <motion.p
+            <motion.ul
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
               viewport={{ once: true }}
-              className="font-inter text-lg md:text-xl text-text leading-relaxed mb-10"
+              className="space-y-3 mb-10"
             >
-              The reinforced airframe and integrated propulsion system support a{" "}
-              <span className="text-white font-semibold">structural weight of approximately 1,900 kg</span>, including
-              onboard avionics and battery systems. At{" "}
-              <span className="text-white font-semibold">maximum takeoff weight (MTOW) of 2,900 kg</span>, the platform is
-              capable of carrying a{" "}
-              <span className="text-accent font-semibold">payload exceeding 1,000 kg</span>, demonstrating substantial
-              heavy-lift capability for VTOL operations.
-            </motion.p>
+              <li className="flex items-start gap-2.5">
+                <span className="mt-2.5 w-1.5 h-1.5 rounded-full bg-primary/60 shrink-0" />
+                <span className="font-inter text-lg md:text-xl text-text leading-relaxed">
+                  Reinforced airframe and integrated propulsion system support a{" "}
+                  <span className="text-white font-semibold">structural weight of approximately 1,900 kg</span>,
+                  including onboard avionics and battery systems
+                </span>
+              </li>
+              <li className="flex items-start gap-2.5">
+                <span className="mt-2.5 w-1.5 h-1.5 rounded-full bg-primary/60 shrink-0" />
+                <span className="font-inter text-lg md:text-xl text-text leading-relaxed">
+                  Rated for a{" "}
+                  <span className="text-white font-semibold">maximum takeoff weight (MTOW) of 2,900 kg</span> fully
+                  loaded
+                </span>
+              </li>
+              <li className="flex items-start gap-2.5">
+                <span className="mt-2.5 w-1.5 h-1.5 rounded-full bg-accent/60 shrink-0" />
+                <span className="font-inter text-lg md:text-xl text-text leading-relaxed">
+                  Capable of carrying a{" "}
+                  <span className="text-accent font-semibold">payload exceeding 1,000 kg</span>, demonstrating
+                  substantial heavy-lift capability for VTOL operations
+                </span>
+              </li>
+            </motion.ul>
 
             {/* Weight Breakdown */}
             <motion.div
@@ -170,7 +187,7 @@ export default function FeatureSection2() {
             className="relative order-first lg:order-last"
             style={{ y: imageY }}
           >
-            <div className="relative aspect-4/3 w-full">
+            <div className="relative aspect-4/3 lg:aspect-auto lg:h-[75vh] w-full">
               {/* Glow behind image */}
               <motion.div
                 initial={{ opacity: 0, scale: 0.8 }}
@@ -199,10 +216,6 @@ export default function FeatureSection2() {
                 {/* Overlay gradient */}
                 <div className="absolute inset-0 bg-linear-to-t from-background/50 via-transparent to-transparent" />
               </motion.div>
-
-              {/* Corner accents */}
-              <div className="absolute -top-3 -right-3 w-12 h-12 border-r-2 border-t-2 border-primary/50" />
-              <div className="absolute -bottom-3 -left-3 w-12 h-12 border-l-2 border-b-2 border-primary/50" />
             </div>
           </motion.div>
         </div>

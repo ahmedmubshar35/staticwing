@@ -5,7 +5,7 @@ import { motion } from "motion/react";
 interface PageHeroProps {
   title: string;
   accentWord: string;
-  subtitle: string;
+  subtitle?: string;
 }
 
 export default function PageHero({ title, accentWord, subtitle }: PageHeroProps) {
@@ -30,12 +30,6 @@ export default function PageHero({ title, accentWord, subtitle }: PageHeroProps)
         <div className="absolute top-1/2 right-1/4 w-[400px] h-[400px] bg-accent/5 rounded-full blur-[150px] -translate-y-1/2" />
       </div>
 
-      {/* Corner Decorations */}
-      <div className="absolute top-24 left-6 w-16 h-16 border-l-2 border-t-2 border-accent/20" />
-      <div className="absolute top-24 right-6 w-16 h-16 border-r-2 border-t-2 border-accent/20" />
-      <div className="absolute bottom-6 left-6 w-16 h-16 border-l-2 border-b-2 border-accent/20" />
-      <div className="absolute bottom-6 right-6 w-16 h-16 border-r-2 border-b-2 border-accent/20" />
-
       {/* Content */}
       <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-8 py-16 text-center">
         {/* Decorative line */}
@@ -53,18 +47,23 @@ export default function PageHero({ title, accentWord, subtitle }: PageHeroProps)
           transition={{ duration: 0.8, delay: 0.2 }}
           className="font-orbitron text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 tracking-tight"
         >
-          {title} <span className="text-primary">{accentWord}</span>
+          {title}{" "}
+          <span className="text-transparent bg-clip-text bg-linear-to-r from-primary via-accent to-primary">
+            {accentWord}
+          </span>
         </motion.h1>
 
         {/* Subtitle */}
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="font-inter text-lg md:text-xl text-text/70 max-w-2xl mx-auto"
-        >
-          {subtitle}
-        </motion.p>
+        {subtitle && (
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="font-rajdhani text-xl md:text-2xl font-semibold text-white max-w-2xl mx-auto leading-snug"
+          >
+            {subtitle}
+          </motion.p>
+        )}
 
         {/* Decorative bottom line */}
         <motion.div

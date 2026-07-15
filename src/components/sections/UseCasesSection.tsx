@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { motion } from "motion/react";
 
 const useCases = [
@@ -127,10 +128,6 @@ export default function UseCasesSection() {
                       <div className="absolute inset-0 bg-linear-to-t from-background/60 via-transparent to-transparent" />
                     </div>
 
-                    {/* Corner accents */}
-                    <div className={`absolute -top-3 -left-3 w-12 h-12 border-l-2 border-t-2 ${colors.border}`} />
-                    <div className={`absolute -bottom-3 -right-3 w-12 h-12 border-r-2 border-b-2 ${colors.border}`} />
-
                     {/* Number badge */}
                     <div className={`absolute top-4 right-4 w-12 h-12 ${colors.bg} ${colors.border} border rounded-lg flex items-center justify-center`}>
                       <span className={`font-orbitron text-xl font-bold ${colors.text}`}>0{useCase.id}</span>
@@ -174,6 +171,33 @@ export default function UseCasesSection() {
                       </motion.div>
                     ))}
                   </div>
+
+                  {/* Contextual CTA */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    {...(index === 0 ? { animate: { opacity: 1, y: 0 } } : { whileInView: { opacity: 1, y: 0 }, viewport: { once: true, amount: 0 } })}
+                    transition={{ duration: 0.5, delay: 0.7 }}
+                    className="flex flex-wrap items-center gap-4 mt-8"
+                  >
+                    <Link
+                      href="/request-demo"
+                      className={`group inline-flex items-center gap-2 px-6 py-3 ${colors.bg} border ${colors.border} rounded-full hover:bg-white/5 transition-all duration-300`}
+                    >
+                      <span className={`font-orbitron text-sm font-bold tracking-wider ${colors.text}`}>
+                        REQUEST DEMO
+                      </span>
+                      <svg className={`w-4 h-4 ${colors.text} group-hover:translate-x-1 transition-transform`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                      </svg>
+                    </Link>
+
+                    <Link
+                      href="/contact"
+                      className="font-rajdhani text-sm text-text/60 hover:text-white uppercase tracking-wider transition-colors duration-300 underline underline-offset-4 decoration-white/20 hover:decoration-white/40"
+                    >
+                      Learn More
+                    </Link>
+                  </motion.div>
                 </motion.div>
               </div>
             </div>

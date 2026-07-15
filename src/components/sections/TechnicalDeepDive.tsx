@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { motion } from "motion/react";
 import { section } from "motion/react-client";
+import KeyTakeaway from "@/components/ui/KeyTakeaway";
 
 export default function TechnicalDeepDive() {
     return (
@@ -39,6 +40,10 @@ export default function TechnicalDeepDive() {
                         <h3 className="font-orbitron text-2xl font-bold text-white mb-6">
                             Airfoil <span className="text-accent">Parametrization</span>
                         </h3>
+                        <KeyTakeaway className="mb-6">
+                            Precisely parameterized geometry keeps airflow attached at high angles of incidence —
+                            maximizing laminar flow while minimizing drag.
+                        </KeyTakeaway>
                         <p className="font-inter text-text text-lg leading-relaxed mb-6">
                             The core performance of the StaticWing architecture is derived from <span className="text-white font-semibold">precisely parameterized airfoil geometry</span>. Using advanced optimization algorithms, the airfoil curvatures has been refined to maintain <span className="text-white font-semibold">boundary-layer attachment under high angles of flow incidence</span>.
                         </p>
@@ -101,11 +106,16 @@ export default function TechnicalDeepDive() {
 
                 {/* 2. Flow Control - Split Layout */}
                 <div className="mb-32">
-                    <div className="text-center mb-12">
+                    <div className="text-center mb-8">
                         <h3 className="font-orbitron text-2xl font-bold text-white">
                             Active <span className="text-primary">Flow Control</span>
                         </h3>
                     </div>
+
+                    <KeyTakeaway className="max-w-3xl mx-auto mb-12">
+                        Two systems work together: streamlined airflow stays attached over the upper surface, while a
+                        custom internal duct keeps outflow pressure uniform and accelerated.
+                    </KeyTakeaway>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                         <motion.div
@@ -166,6 +176,10 @@ export default function TechnicalDeepDive() {
                             <h3 className="font-orbitron text-3xl font-bold text-white mb-6">
                                 Custom <br />Propulsion
                             </h3>
+                            <KeyTakeaway className="mb-6">
+                                Building propulsion directly into the wing structure cuts parasitic aerodynamic losses
+                                and boosts overall thrust efficiency.
+                            </KeyTakeaway>
                             <p className="font-inter text-text leading-relaxed">
                                 The StaticWing&apos;s propulsion system is <span className="text-white font-semibold">structurally integrated into the wing architecture</span>, reducing parasitic aerodynamic losses while optimizing <span className="text-white font-semibold">thrust generation and overall propulsion efficiency</span>.
                             </p>
@@ -231,6 +245,11 @@ export default function TechnicalDeepDive() {
                     <p className="text-xs text-center font-rajdhani text-white/50 uppercase tracking-wider mt-6">
                         Drag Minimization Iterations
                     </p>
+
+                    <KeyTakeaway className="mt-8 max-w-3xl mx-auto">
+                        Each iteration reshapes the airfoil to progressively cut drag, laying the groundwork for the
+                        full multi-variable optimization pass below.
+                    </KeyTakeaway>
                 </div>
 
                 {/* 5. Multi-variable Optimization Section */}

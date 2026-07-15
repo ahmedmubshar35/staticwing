@@ -2,9 +2,9 @@
 import { useEffect } from "react";
 import { usePassword } from "@/context/PasswordContext";
 import { useRouter } from "next/navigation";
-import Link from "next/link";
 import Navbar from "@/components/ui/Navbar";
 import PageHero from "@/components/ui/PageHero";
+import DeepDiveCTA from "@/components/ui/DeepDiveCTA";
 import FeatureSection from "@/components/sections/FeatureSection";
 import FeatureSection2 from "@/components/sections/FeatureSection2";
 import PropulsionSection from "@/components/sections/PropulsionSection";
@@ -72,26 +72,18 @@ export default function TechnologyPage() {
         subtitle="Discover the engineering innovations that make StaticWing the most advanced VTOL platform in its class."
       />
 
-      {/* Link to Deep Dive */}
-      <div className="w-full bg-background pb-12">
-        <div className="max-w-7xl mx-auto px-6 flex justify-center">
-          <Link
-            href="/deep-dive"
-            className="group relative inline-flex items-center gap-2 px-8 py-4 bg-primary/10 border border-primary/20 rounded-full overflow-hidden hover:bg-primary/20 transition-all duration-300"
-          >
-            <span className="font-orbitron font-bold text-primary tracking-wider">EXPLORE STATIC WING DEEP DIVE</span>
-            <svg className="w-5 h-5 text-primary group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-            </svg>
-          </Link>
-        </div>
-      </div>
+      <DeepDiveCTA />
 
       <FeatureSection />
       <FeatureSection2 />
 
+      <DeepDiveCTA eyebrow="Want the full technical breakdown?" label="VIEW THE DEEP DIVE" />
+
       <PropulsionSection />
       <StaticWingPerformance />
+
+      <DeepDiveCTA eyebrow="Curious how it all comes together?" label="SEE THE FULL DEEP DIVE" />
+
       <FeatureSection3 />
       <FeatureSection4 />
       <Footer />
