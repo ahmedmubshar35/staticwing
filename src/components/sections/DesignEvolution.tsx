@@ -3,6 +3,7 @@
 import { useRef, useState } from "react";
 import Image from "next/image";
 import { motion, useScroll, useTransform, AnimatePresence } from "motion/react";
+import KeyTakeaway from "@/components/ui/KeyTakeaway";
 
 const evolutionStages = [
     {
@@ -82,9 +83,13 @@ export default function DesignEvolution() {
                     <h2 className="font-orbitron text-3xl md:text-5xl font-bold text-white mb-6">
                         DESIGN <span className="text-primary">EVOLUTION</span>
                     </h2>
-                    <p className="max-w-2xl text-text font-inter text-lg">
+                    <p className="max-w-2xl text-text font-inter text-lg mb-6">
                         The journey from theoretical concept to validated reality.
                     </p>
+                    <KeyTakeaway className="max-w-2xl">
+                        Seven phases carry StaticWing from an early lift concept through CFD-refined aerodynamics to a
+                        fully validated, 6DoF flight-control-ready configuration.
+                    </KeyTakeaway>
                 </motion.div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">

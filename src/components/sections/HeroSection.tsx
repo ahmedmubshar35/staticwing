@@ -77,15 +77,14 @@ export default function HeroSection() {
           </span>
         </motion.h1>
 
-        {/* Subtitle */}
+        {/* Value Proposition */}
         <motion.p
           initial={{ opacity: 0, y: 30 }}
           animate={isLoaded ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 1, delay: 0.4, ease: "easeOut" }}
-          className="font-inter text-lg md:text-xl text-text max-w-2xl mb-8 leading-relaxed"
+          transition={{ duration: 1, delay: 0.35, ease: "easeOut" }}
+          className="font-rajdhani text-xl md:text-2xl font-semibold text-white max-w-2xl mb-8 leading-snug"
         >
-          Next-generation VTOL technology enabling high payload performance, low acoustic signature, and minimal downwash
-          disturbance.
+          A next-generation VTOL aircraft for heavy payload logistics and industrial operations.
         </motion.p>
 
         {/* CTA Button */}
@@ -124,18 +123,6 @@ export default function HeroSection() {
             />
           </div>
         </motion.div>
-      </motion.div>
-
-      {/* Corner Decorations */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={isLoaded ? { opacity: 1 } : {}}
-        transition={{ duration: 1, delay: 0.8 }}
-      >
-        <div className="absolute top-24 left-6 w-20 h-20 border-l-2 border-t-2 border-accent/30" />
-        <div className="absolute top-24 right-6 w-20 h-20 border-r-2 border-t-2 border-accent/30" />
-        <div className="absolute bottom-24 left-6 w-20 h-20 border-l-2 border-b-2 border-accent/30" />
-        <div className="absolute bottom-24 right-6 w-20 h-20 border-r-2 border-b-2 border-accent/30" />
       </motion.div>
     </section>
   );

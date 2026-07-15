@@ -53,14 +53,10 @@ export default function TechnologyPreview() {
                 {/* Icon */}
                 <div className="relative z-10 w-20 h-20 bg-primary/10 border border-primary/30 rounded-xl flex items-center justify-center">
                   <svg className="w-10 h-10 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8.25 3v1.5M4.5 8.25H3m18 0h-1.5M4.5 12H3m18 0h-1.5m-15 3.75H3m18 0h-1.5M8.25 19.5V21M12 3v1.5m0 15V21m3.75-18v1.5m0 15V21M15 4.5H9A2.25 2.25 0 006.75 6.75v10.5A2.25 2.25 0 009 19.5h6a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0015 4.5z" />
                   </svg>
                 </div>
               </div>
-
-              {/* Corner accents */}
-              <div className="absolute -top-3 -left-3 w-8 h-8 border-l-2 border-t-2 border-primary/50" />
-              <div className="absolute -bottom-3 -right-3 w-8 h-8 border-r-2 border-b-2 border-primary/50" />
             </div>
           </motion.div>
 

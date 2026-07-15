@@ -50,7 +50,7 @@ export default function PasswordPage() {
   };
 
   return (
-    <div className="relative min-h-screen flex items-center justify-center bg-background overflow-hidden">
+    <div className="relative h-screen flex items-center justify-center bg-background overflow-hidden py-4 sm:py-6 lg:py-6">
       {/* Background Elements */}
       <div className="absolute inset-0">
         {/* Subtle grid */}
@@ -76,20 +76,20 @@ export default function PasswordPage() {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-8"
+          className="text-center mb-2 sm:mb-4 lg:mb-6"
         >
           <Link href="/" className="inline-block">
-            <span className="font-orbitron text-3xl font-bold tracking-wider text-white">
+            <span className="font-orbitron text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-wider text-white">
               STATIC<span className="text-accent">WING</span>
             </span>
           </Link>
-          <div className="flex items-center justify-center gap-2 mt-2">
-            <span className="font-rajdhani text-sm text-text/50">A product of</span>
+          <div className="flex items-center justify-center gap-2 mt-1 lg:mt-2">
+            <span className="font-rajdhani text-xs sm:text-sm text-text/50">A product of</span>
             <Link
               href="https://vtolution.co"
               target="_blank"
               rel="noopener noreferrer"
-              className="font-orbitron text-sm text-primary hover:text-accent transition-colors duration-300"
+              className="font-orbitron text-xs sm:text-sm text-primary hover:text-accent transition-colors duration-300"
             >
               VTOLUTION
             </Link>
@@ -101,22 +101,18 @@ export default function PasswordPage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="relative bg-surface/30 backdrop-blur-sm rounded-2xl border border-white/10 p-8 lg:p-10"
+          className="relative bg-surface/30 backdrop-blur-sm rounded-2xl border border-white/10 p-4 sm:p-5 lg:p-6"
         >
-          {/* Corner decorations */}
-          <div className="absolute -top-3 -left-3 w-12 h-12 border-l-2 border-t-2 border-accent/30" />
-          <div className="absolute -bottom-3 -right-3 w-12 h-12 border-r-2 border-b-2 border-accent/30" />
-
           {/* Lock Icon */}
           <motion.div
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="flex justify-center mb-6"
+            className="flex justify-center mb-2 sm:mb-3 lg:mb-4"
           >
-            <div className="w-16 h-16 bg-accent/10 border border-accent/30 rounded-full flex items-center justify-center">
+            <div className="w-10 h-10 sm:w-12 sm:h-12 lg:w-12 lg:h-12 bg-accent/10 border border-accent/30 rounded-full flex items-center justify-center">
               <svg
-                className="w-8 h-8 text-accent"
+                className="w-5 h-5 sm:w-6 sm:h-6 lg:w-6 lg:h-6 text-accent"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -132,21 +128,21 @@ export default function PasswordPage() {
           </motion.div>
 
           {/* Header */}
-          <div className="text-center mb-8">
-            <h1 className="font-orbitron text-2xl font-bold text-white mb-2">
+          <div className="text-center mb-3 sm:mb-4 lg:mb-4">
+            <h1 className="font-orbitron text-lg sm:text-xl lg:text-xl font-bold text-white mb-1">
               Restricted <span className="text-primary">Access</span>
             </h1>
-            <p className="font-inter text-text/60 text-sm">
+            <p className="font-inter text-text/60 text-xs sm:text-sm">
               Please enter the password to continue
             </p>
           </div>
 
           {/* Form */}
-          <form onSubmit={handleSubmit} className="space-y-6">
+          <form onSubmit={handleSubmit} className="space-y-2 sm:space-y-3 lg:space-y-4">
             <div>
               <label
                 htmlFor="password"
-                className="font-rajdhani text-sm text-accent uppercase tracking-wider mb-2 block"
+                className="font-rajdhani text-xs sm:text-sm text-accent uppercase tracking-wider mb-1 block"
               >
                 Password
               </label>
@@ -157,7 +153,7 @@ export default function PasswordPage() {
                   name="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="w-full px-4 py-3 pr-12 bg-background/50 border border-white/10 rounded-lg font-inter text-white placeholder:text-text/40 focus:outline-none focus:border-accent/50 transition-colors duration-300"
+                  className="w-full px-4 py-2 sm:py-2.5 lg:py-2.5 pr-12 bg-background/50 border border-white/10 rounded-lg font-inter text-white placeholder:text-text/40 focus:outline-none focus:border-accent/50 transition-colors duration-300"
                   placeholder="Enter password"
                   autoComplete="off"
                 />
@@ -210,9 +206,9 @@ export default function PasswordPage() {
             <button
               type="submit"
               disabled={isLoading}
-              className="group relative w-full px-8 py-4 font-rajdhani font-semibold text-sm tracking-wider uppercase overflow-hidden rounded-lg border border-accent/50 hover:border-accent transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="group relative w-full px-8 py-2.5 sm:py-3 lg:py-3 font-rajdhani font-semibold text-sm tracking-wider uppercase overflow-hidden rounded-lg bg-accent shadow-lg shadow-accent/20 hover:bg-accent/90 hover:shadow-accent/30 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              <span className="relative z-10 text-accent group-hover:text-background transition-colors duration-300 flex items-center justify-center gap-2">
+              <span className="relative z-10 text-background flex items-center justify-center gap-2">
                 {isLoading ? (
                   <>
                     <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24">
@@ -247,13 +243,12 @@ export default function PasswordPage() {
                   </>
                 )}
               </span>
-              <div className="absolute inset-0 bg-accent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left group-disabled:scale-x-0" />
             </button>
           </form>
 
           {/* Additional Info */}
-          <div className="mt-8 pt-6 border-t border-white/10 text-center">
-            <p className="font-inter text-sm text-text/50 mb-4">
+          <div className="mt-3 pt-2 sm:mt-4 sm:pt-3 lg:mt-4 lg:pt-3 border-t border-white/10 text-center">
+            <p className="font-inter text-xs sm:text-sm text-text/50 mb-2">
               This area is password protected
             </p>
             <Link

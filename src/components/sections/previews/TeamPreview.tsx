@@ -38,21 +38,26 @@ export default function TeamPreview() {
             <div className="relative">
               {/* Team avatars arrangement */}
               <div className="flex items-center gap-2">
-                {[...Array(4)].map((_, i) => (
+                {[
+                  { initials: "NB", gradient: "from-primary to-accent" },
+                  { initials: "PO", gradient: "from-accent to-primary" },
+                  { initials: "OS", gradient: "from-accent to-accent/60" },
+                  { initials: "PA", gradient: "from-primary to-primary/60" },
+                ].map((member, i) => (
                   <motion.div
-                    key={i}
+                    key={member.initials}
                     initial={{ opacity: 0, scale: 0.8 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.5, delay: 0.2 + i * 0.1 }}
                     viewport={{ once: true }}
-                    className={`w-16 h-16 md:w-20 md:h-20 rounded-full bg-surface/50 border-2 border-white/10 flex items-center justify-center ${
+                    className={`w-16 h-16 md:w-20 md:h-20 rounded-full bg-linear-to-br ${member.gradient} border-2 border-background flex items-center justify-center ${
                       i > 0 ? "-ml-4" : ""
                     }`}
                     style={{ zIndex: 4 - i }}
                   >
-                    <svg className="w-8 h-8 md:w-10 md:h-10 text-text/30" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                    </svg>
+                    <span className="font-orbitron text-sm md:text-base font-bold text-white">
+                      {member.initials}
+                    </span>
                   </motion.div>
                 ))}
                 <motion.div
@@ -60,7 +65,7 @@ export default function TeamPreview() {
                   whileInView={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.5, delay: 0.6 }}
                   viewport={{ once: true }}
-                  className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-primary/20 border-2 border-primary/30 flex items-center justify-center -ml-4"
+                  className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-primary/20 border-2 border-background flex items-center justify-center -ml-4"
                   style={{ zIndex: 0 }}
                 >
                   <span className="font-orbitron text-sm md:text-base text-primary font-bold">+4</span>

@@ -88,7 +88,7 @@ export default function StaticWingPage() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.1 }}
-                        className="font-orbitron text-5xl md:text-7xl lg:text-9xl font-bold text-white mb-6"
+                        className="font-orbitron text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 tracking-tight"
                     >
                         STATIC<span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-accent">WING</span>
                     </motion.h1>
@@ -96,7 +96,7 @@ export default function StaticWingPage() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.2 }}
-                        className="max-w-2xl mx-auto text-text/80 font-inter text-lg md:text-xl"
+                        className="max-w-2xl mx-auto text-white font-rajdhani font-semibold text-xl md:text-2xl leading-snug"
                     >
                         Lift generation without forward velocity. Inspired by nature, engineered for the future of urban flight.
                     </motion.p>

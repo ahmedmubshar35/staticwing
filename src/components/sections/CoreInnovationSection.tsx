@@ -2,6 +2,7 @@
 
 import { useRef, useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
+import KeyTakeaway from "@/components/ui/KeyTakeaway";
 
 // Define steps with estimated timestamps (in seconds)
 // Note: These need to be adjusted based on the actual video content
@@ -194,6 +195,11 @@ export default function CoreInnovationSection() {
                         THE <span className="text-primary">SHROUDING</span> EFFECT
                     </motion.h2>
                 </div>
+
+                <KeyTakeaway className="max-w-3xl mx-auto mb-10">
+                    A second flowstream (FS2) shields the primary jet (FS1) from atmospheric pressure, letting it fully
+                    expand — that shielding is what unlocks usable lift. Scroll the steps below for the full breakdown.
+                </KeyTakeaway>
 
                 {/* Cinema Container */}
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 bg-surface/5 backdrop-blur-sm border border-white/10 rounded-3xl p-4 lg:p-6 shadow-2xl items-center">

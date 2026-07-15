@@ -144,7 +144,7 @@ export default function ParallaxSection() {
               className="order-1 lg:order-2 relative"
               style={{ y: imageY, scale: imageScale }}
             >
-              <div className="relative aspect-square max-w-lg mx-auto">
+              <div className="relative aspect-[3/2] max-w-2xl mx-auto">
                 {/* Glow effect behind image */}
                 <motion.div
                   initial={{ opacity: 0, scale: 0.8 }}
@@ -165,24 +165,11 @@ export default function ParallaxSection() {
                   <Image
                     src="/staticwing.png"
                     alt="StaticWing Drone"
-                    width={500}
-                    height={500}
+                    width={810}
+                    height={540}
                     className="object-contain drop-shadow-2xl"
                     priority
                   />
-                </motion.div>
-
-                {/* Corner accents */}
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  transition={{ duration: 0.8, delay: 0.4 }}
-                  viewport={{ once: true }}
-                >
-                  <div className="absolute top-0 left-0 w-16 h-16 border-l-2 border-t-2 border-accent/50" />
-                  <div className="absolute top-0 right-0 w-16 h-16 border-r-2 border-t-2 border-accent/50" />
-                  <div className="absolute bottom-0 left-0 w-16 h-16 border-l-2 border-b-2 border-accent/50" />
-                  <div className="absolute bottom-0 right-0 w-16 h-16 border-r-2 border-b-2 border-accent/50" />
                 </motion.div>
 
                 {/* Floating tech elements */}

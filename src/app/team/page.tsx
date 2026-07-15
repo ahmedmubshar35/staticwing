@@ -63,7 +63,6 @@ export default function TeamPage() {
       <PageHero
         title="Meet Our"
         accentWord="Team"
-        subtitle="World-class aerospace engineers, technical advisors, and university partnerships driving VTOL innovation."
       />
       <TeamSection />
       <Footer />

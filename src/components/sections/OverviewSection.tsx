@@ -8,7 +8,58 @@ interface MetricCard {
   unit?: string;
   label: string;
   sublabel?: string;
+  icon: React.ReactNode;
 }
+
+const iconProps = {
+  fill: "none",
+  stroke: "currentColor",
+  viewBox: "0 0 24 24",
+} as const;
+
+const PayloadIcon = () => (
+  <svg {...iconProps} className="w-full h-full">
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth={1.5}
+      d="M20.25 7.5l-8.25-4.5L3.75 7.5m16.5 0l-8.25 4.5m8.25-4.5v9l-8.25 4.5M3.75 7.5l8.25 4.5m0 9l-8.25-4.5m8.25 4.5v-9M3.75 7.5v9l8.25 4.5"
+    />
+  </svg>
+);
+
+const MtowIcon = () => (
+  <svg {...iconProps} className="w-full h-full">
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth={1.5}
+      d="M2.25 18L9 11.25l4.306 4.306a11.95 11.95 0 015.814-5.518l2.74-1.22m0 0l-5.94-2.281m5.94 2.28l-2.28 5.941"
+    />
+  </svg>
+);
+
+const NoiseIcon = () => (
+  <svg {...iconProps} className="w-full h-full">
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth={1.5}
+      d="M19.114 5.636a9 9 0 010 12.728M16.463 8.288a5.25 5.25 0 010 7.424M6.75 8.25l4.72-4.72a.75.75 0 011.28.53v15.88a.75.75 0 01-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.01 9.01 0 012.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75z"
+    />
+  </svg>
+);
+
+const DwowIcon = () => (
+  <svg {...iconProps} className="w-full h-full">
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth={1.5}
+      d="M3 8h10a3 3 0 100-6M3 12h14a3 3 0 110 6H9M3 16h6"
+    />
+  </svg>
+);
 
 const metrics: MetricCard[] = [
   {
@@ -16,24 +67,28 @@ const metrics: MetricCard[] = [
     unit: "kg",
     label: "Payload",
     sublabel: undefined,
+    icon: <PayloadIcon />,
   },
   {
     value: "~2900",
     unit: "kg",
     label: "MTOW",
     sublabel: "Maximum Takeoff Weight",
+    icon: <MtowIcon />,
   },
   {
     value: "~64",
     unit: "dB",
     label: "Noise",
     sublabel: "at 100 meters",
+    icon: <NoiseIcon />,
   },
   {
     value: "Negligible",
     unit: undefined,
     label: "DWOW",
     sublabel: "Downwash/Outwash",
+    icon: <DwowIcon />,
   },
 ];
 
@@ -126,6 +181,11 @@ export default function OverviewSection() {
 
                 {/* Content */}
                 <div className="relative z-10">
+                  {/* Icon */}
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 mb-4 sm:mb-6 text-accent bg-accent/10 border border-accent/30 rounded-xl p-2 sm:p-2.5">
+                    {metric.icon}
+                  </div>
+
                   {/* Value */}
                   <div className="mb-4 sm:mb-6">
                     <span className="font-orbitron text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white">
@@ -150,9 +210,6 @@ export default function OverviewSection() {
                     </p>
                   )}
                 </div>
-
-                {/* Decorative corner */}
-                <div className="absolute bottom-4 right-4 sm:bottom-6 sm:right-6 w-8 h-8 sm:w-12 sm:h-12 border-r-2 border-b-2 border-accent/20 group-hover:border-accent/60 transition-colors duration-500" />
 
                 {/* Corner dots */}
                 <div className="absolute top-4 right-4 sm:top-6 sm:right-6 w-2 h-2 bg-accent/30 rounded-full group-hover:bg-accent transition-colors duration-500" />

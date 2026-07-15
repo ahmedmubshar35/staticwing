@@ -12,8 +12,6 @@ const navLinks = [
   { name: "Team", href: "/team" },
   { name: "Deep Dive", href: "/deep-dive" },
   { name: "3D Render", href: "/3d-render" },
-  { name: "Request Demo", href: "/request-demo" },
-  { name: "Contact", href: "/contact" },
 ];
 
 export default function Navbar() {
@@ -37,14 +35,14 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden md:flex items-center gap-7">
             {navLinks.map((link) => (
               <Link
                 key={link.name}
                 href={link.href}
-                className={`relative font-rajdhani text-sm tracking-wider uppercase transition-colors duration-300 ${isActive(link.href)
+                className={`relative font-rajdhani text-base font-medium tracking-wider transition-colors duration-300 ${isActive(link.href)
                   ? "text-accent"
-                  : "text-text/70 hover:text-white"
+                  : "text-white/90 hover:text-white"
                   }`}
               >
                 {link.name}
@@ -57,6 +55,22 @@ export default function Navbar() {
                 )}
               </Link>
             ))}
+
+            {/* CTAs */}
+            <div className="flex items-center gap-3 pl-2">
+              <Link
+                href="/request-demo"
+                className="font-rajdhani text-sm font-semibold tracking-wider text-white/90 border border-white/20 hover:border-accent hover:text-accent rounded-lg px-4 py-2 transition-colors duration-300"
+              >
+                Request Demo
+              </Link>
+              <Link
+                href="/contact"
+                className="font-rajdhani text-sm font-semibold tracking-wider text-background bg-accent hover:bg-accent/90 shadow-md shadow-accent/20 rounded-lg px-4 py-2 transition-colors duration-300"
+              >
+                Contact
+              </Link>
+            </div>
           </div>
 
           {/* Mobile Menu Button */}
@@ -127,7 +141,7 @@ export default function Navbar() {
                   <Link
                     href={link.href}
                     onClick={() => setIsMenuOpen(false)}
-                    className={`font-orbitron text-2xl tracking-wider uppercase transition-colors duration-300 ${isActive(link.href)
+                    className={`font-orbitron text-2xl tracking-wider transition-colors duration-300 ${isActive(link.href)
                       ? "text-accent"
                       : "text-white hover:text-accent"
                       }`}
@@ -136,6 +150,29 @@ export default function Navbar() {
                   </Link>
                 </motion.div>
               ))}
+
+              {/* CTAs */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3, delay: 0.1 + navLinks.length * 0.05 }}
+                className="flex flex-col items-center gap-4 mt-2"
+              >
+                <Link
+                  href="/request-demo"
+                  onClick={() => setIsMenuOpen(false)}
+                  className="font-rajdhani text-lg font-semibold tracking-wider text-white border border-white/20 hover:border-accent hover:text-accent rounded-lg px-8 py-3 transition-colors duration-300"
+                >
+                  Request Demo
+                </Link>
+                <Link
+                  href="/contact"
+                  onClick={() => setIsMenuOpen(false)}
+                  className="font-rajdhani text-lg font-semibold tracking-wider text-background bg-accent hover:bg-accent/90 rounded-lg px-8 py-3 transition-colors duration-300"
+                >
+                  Contact
+                </Link>
+              </motion.div>
 
               {/* Company branding */}
               <motion.div
