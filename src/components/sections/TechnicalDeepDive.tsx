@@ -3,7 +3,6 @@
 import Image from "next/image";
 import { motion } from "motion/react";
 import { section } from "motion/react-client";
-import KeyTakeaway from "@/components/ui/KeyTakeaway";
 
 export default function TechnicalDeepDive() {
     return (
@@ -20,13 +19,13 @@ export default function TechnicalDeepDive() {
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="text-center mb-20"
+                    className="mb-20 text-right"
                 >
                     <span className="font-rajdhani text-accent text-sm tracking-[0.3em] uppercase mb-4 block">
                         Under the Hood
                     </span>
                     <h2 className="font-orbitron text-3xl md:text-5xl font-bold text-white mb-6">
-                        TECHNICAL <span className="text-primary">DEEP DIVE</span>
+                        TECHNICAL <span className="text-primary">DEEP<br />DIVE</span>
                     </h2>
                 </motion.div>
 
@@ -36,16 +35,26 @@ export default function TechnicalDeepDive() {
                         initial={{ opacity: 0, x: -30 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
+                        className="lg:order-1 relative aspect-video rounded-2xl overflow-hidden bg-white/5 border border-white/10"
                     >
-                        <h3 className="font-orbitron text-2xl font-bold text-white mb-6">
-                            Airfoil <span className="text-accent">Parametrization</span>
+                        <Image
+                            src="/static-wing/airfoil/airfoil-parametrization.png"
+                            alt="Airfoil Parametrization"
+                            fill
+                            className="object-contain p-4 bg-white"
+                        />
+                    </motion.div>
+                    <motion.div
+                        initial={{ opacity: 0, x: 30 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        className="lg:order-2"
+                    >
+                        <h3 className="font-orbitron text-3xl md:text-5xl font-bold text-white mb-6">
+                            Airfoil <br /><span className="text-accent">Parametrization</span>
                         </h3>
-                        <KeyTakeaway className="mb-6">
-                            Precisely parameterized geometry keeps airflow attached at high angles of incidence —
-                            maximizing laminar flow while minimizing drag.
-                        </KeyTakeaway>
                         <p className="font-inter text-text text-lg leading-relaxed mb-6">
-                            The core performance of the StaticWing architecture is derived from <span className="text-white font-semibold">precisely parameterized airfoil geometry</span>. Using advanced optimization algorithms, the airfoil curvatures has been refined to maintain <span className="text-white font-semibold">boundary-layer attachment under high angles of flow incidence</span>.
+                            StaticWing's performance is built on <span className="text-white font-semibold">precisely parameterized airfoil geometry</span>, optimized to maintain <span className="text-white font-semibold">boundary-layer attachment at high angles of incidence</span>.
                         </p>
                         <ul className="space-y-3 font-rajdhani text-white/80">
                             <li className="flex items-center gap-3">
@@ -62,19 +71,6 @@ export default function TechnicalDeepDive() {
                             </li>
                         </ul>
                     </motion.div>
-                    <motion.div
-                        initial={{ opacity: 0, x: 30 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        className="relative aspect-video rounded-2xl overflow-hidden bg-white/5 border border-white/10"
-                    >
-                        <Image
-                            src="/static-wing/airfoil/airfoil-parametrization.png"
-                            alt="Airfoil Parametrization"
-                            fill
-                            className="object-contain p-4 bg-white"
-                        />
-                    </motion.div>
                 </div>
 
                 {/* Drag Buildup Analysis */}
@@ -84,8 +80,8 @@ export default function TechnicalDeepDive() {
                     viewport={{ once: true }}
                     className="mb-32"
                 >
-                    <div className="text-center mb-8">
-                        <h4 className="font-orbitron text-xl font-bold text-white mb-2">
+                    <div className="mb-8 text-center">
+                        <h4 className="font-orbitron text-3xl md:text-5xl font-bold text-white mb-2">
                             Drag <span className="text-accent">Buildup</span>
                         </h4>
                         <p className="text-text/70 font-inter text-sm max-w-xl mx-auto">
@@ -106,23 +102,18 @@ export default function TechnicalDeepDive() {
 
                 {/* 2. Flow Control - Split Layout */}
                 <div className="mb-32">
-                    <div className="text-center mb-8">
-                        <h3 className="font-orbitron text-2xl font-bold text-white">
+                    <div className="mb-8 text-center">
+                        <h3 className="font-orbitron text-3xl md:text-5xl font-bold text-white">
                             Active <span className="text-primary">Flow Control</span>
                         </h3>
                     </div>
 
-                    <KeyTakeaway className="max-w-3xl mx-auto mb-12">
-                        Two systems work together: streamlined airflow stays attached over the upper surface, while a
-                        custom internal duct keeps outflow pressure uniform and accelerated.
-                    </KeyTakeaway>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div className="flex flex-col md:flex-row gap-6">
                         <motion.div
                             initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            className="group"
+                            className="group flex-1"
                         >
                             <div className="relative rounded-2xl bg-surface/10 border border-white/10 overflow-hidden">
                                 <div className="aspect-4/3 relative">
@@ -145,7 +136,7 @@ export default function TechnicalDeepDive() {
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.2 }}
                             viewport={{ once: true }}
-                            className="group"
+                            className="group flex-1"
                         >
                             <div className="relative rounded-2xl bg-surface/10 border border-white/10 overflow-hidden">
                                 <div className="aspect-4/3 relative">
@@ -173,13 +164,9 @@ export default function TechnicalDeepDive() {
                     <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 items-center">
                         <div className="lg:col-span-2">
                             <span className="font-rajdhani text-primary text-xs tracking-widest uppercase mb-2 block">Power Unit</span>
-                            <h3 className="font-orbitron text-3xl font-bold text-white mb-6">
-                                Custom <br />Propulsion
+                            <h3 className="font-orbitron text-3xl md:text-5xl font-bold text-white mb-6">
+                                Custom <br /><span className="text-primary">Propulsion</span>
                             </h3>
-                            <KeyTakeaway className="mb-6">
-                                Building propulsion directly into the wing structure cuts parasitic aerodynamic losses
-                                and boosts overall thrust efficiency.
-                            </KeyTakeaway>
                             <p className="font-inter text-text leading-relaxed">
                                 The StaticWing&apos;s propulsion system is <span className="text-white font-semibold">structurally integrated into the wing architecture</span>, reducing parasitic aerodynamic losses while optimizing <span className="text-white font-semibold">thrust generation and overall propulsion efficiency</span>.
                             </p>
@@ -206,12 +193,12 @@ export default function TechnicalDeepDive() {
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="text-center mb-12"
+                        className="mb-12 text-center"
                     >
                         <span className="font-rajdhani text-accent text-sm tracking-[0.3em] uppercase mb-4 block">
                             Performance Analysis
                         </span>
-                        <h3 className="font-orbitron text-2xl md:text-3xl font-bold text-white mb-4">
+                        <h3 className="font-orbitron text-3xl md:text-5xl font-bold text-white mb-4">
                             Design <span className="text-accent">Optimization</span>
                         </h3>
                         <p className="text-text/80 font-inter mt-4 max-w-2xl mx-auto">
@@ -245,11 +232,6 @@ export default function TechnicalDeepDive() {
                     <p className="text-xs text-center font-rajdhani text-white/50 uppercase tracking-wider mt-6">
                         Drag Minimization Iterations
                     </p>
-
-                    <KeyTakeaway className="mt-8 max-w-3xl mx-auto">
-                        Each iteration reshapes the airfoil to progressively cut drag, laying the groundwork for the
-                        full multi-variable optimization pass below.
-                    </KeyTakeaway>
                 </div>
 
                 {/* 5. Multi-variable Optimization Section */}
@@ -258,12 +240,12 @@ export default function TechnicalDeepDive() {
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="text-center mb-12"
+                        className="mb-12 text-center"
                     >
                         <span className="font-rajdhani text-primary text-sm tracking-[0.3em] uppercase mb-4 block">
                             CFD Results
                         </span>
-                        <h3 className="font-orbitron text-2xl md:text-3xl font-bold text-white mb-4">
+                        <h3 className="font-orbitron text-3xl md:text-5xl font-bold text-white mb-4">
                             Multi-variable <span className="text-primary">Optimization</span>
                         </h3>
                         <p className="text-text/80 font-inter mt-4 max-w-2xl mx-auto">

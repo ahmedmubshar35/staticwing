@@ -76,25 +76,22 @@ export default function FeatureSection2() {
               <li className="flex items-start gap-2.5">
                 <span className="mt-2.5 w-1.5 h-1.5 rounded-full bg-primary/60 shrink-0" />
                 <span className="font-inter text-lg md:text-xl text-text leading-relaxed">
-                  Reinforced airframe and integrated propulsion system support a{" "}
-                  <span className="text-white font-semibold">structural weight of approximately 1,900 kg</span>,
-                  including onboard avionics and battery systems
+                  Structural weight:{" "}
+                  <span className="text-white font-semibold">~1,900 kg</span>, avionics and batteries included
                 </span>
               </li>
               <li className="flex items-start gap-2.5">
                 <span className="mt-2.5 w-1.5 h-1.5 rounded-full bg-primary/60 shrink-0" />
                 <span className="font-inter text-lg md:text-xl text-text leading-relaxed">
-                  Rated for a{" "}
-                  <span className="text-white font-semibold">maximum takeoff weight (MTOW) of 2,900 kg</span> fully
-                  loaded
+                  Max takeoff weight (MTOW):{" "}
+                  <span className="text-white font-semibold">2,900 kg</span>
                 </span>
               </li>
               <li className="flex items-start gap-2.5">
                 <span className="mt-2.5 w-1.5 h-1.5 rounded-full bg-accent/60 shrink-0" />
                 <span className="font-inter text-lg md:text-xl text-text leading-relaxed">
-                  Capable of carrying a{" "}
-                  <span className="text-accent font-semibold">payload exceeding 1,000 kg</span>, demonstrating
-                  substantial heavy-lift capability for VTOL operations
+                  Payload capacity:{" "}
+                  <span className="text-accent font-semibold">1,000+ kg</span>
                 </span>
               </li>
             </motion.ul>

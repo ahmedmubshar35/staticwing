@@ -2,7 +2,6 @@
 
 import { useRef, useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import KeyTakeaway from "@/components/ui/KeyTakeaway";
 
 // Define steps with estimated timestamps (in seconds)
 // Note: These need to be adjusted based on the actual video content
@@ -178,7 +177,7 @@ export default function CoreInnovationSection() {
             <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
 
                 {/* Header */}
-                <div className="text-center mb-12">
+                <div className="mb-12 text-right">
                     <motion.span
                         initial={{ opacity: 0, y: 10 }}
                         whileInView={{ opacity: 1, y: 0 }}
@@ -192,20 +191,15 @@ export default function CoreInnovationSection() {
                         transition={{ delay: 0.1 }}
                         className="font-orbitron text-3xl md:text-5xl font-bold text-white"
                     >
-                        THE <span className="text-primary">SHROUDING</span> EFFECT
+                        THE <span className="text-primary">SHROUDING</span> <br /> EFFECT
                     </motion.h2>
                 </div>
-
-                <KeyTakeaway className="max-w-3xl mx-auto mb-10">
-                    A second flowstream (FS2) shields the primary jet (FS1) from atmospheric pressure, letting it fully
-                    expand — that shielding is what unlocks usable lift. Scroll the steps below for the full breakdown.
-                </KeyTakeaway>
 
                 {/* Cinema Container */}
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 bg-surface/5 backdrop-blur-sm border border-white/10 rounded-3xl p-4 lg:p-6 shadow-2xl items-center">
 
-                    {/* Left: Video Player (8 cols) */}
-                    <div className="lg:col-span-8 relative rounded-xl overflow-hidden bg-black/50 border border-white/5 aspect-video flex flex-col group">
+                    {/* Left: Video Player (7 cols) */}
+                    <div className="lg:col-span-7 relative rounded-xl overflow-hidden bg-black/50 border border-white/5 aspect-video flex flex-col group">
                         <video
                             ref={videoRef}
                             src="/static-wing/propulsion-system.mp4"
@@ -273,8 +267,8 @@ export default function CoreInnovationSection() {
                         </div>
                     </div>
 
-                    {/* Right: Interactive Content (4 cols) */}
-                    <div className="lg:col-span-4 flex flex-col justify-center">
+                    {/* Right: Interactive Content (5 cols) */}
+                    <div className="lg:col-span-5 flex flex-col justify-center">
 
                         {/* Dynamic Content Area */}
                         <div className="relative">
@@ -285,12 +279,12 @@ export default function CoreInnovationSection() {
                                     animate={{ opacity: 1, y: 0 }}
                                     exit={{ opacity: 0, y: -10 }}
                                     transition={{ duration: 0.4 }}
-                                    className="flex flex-col"
+                                    className="flex flex-col text-right items-end"
                                 >
                                     {/* Progress Line */}
                                     <div className="w-12 h-1 bg-primary mb-6" />
 
-                                    <span className="font-rajdhani text-primary text-sm uppercase tracking-widest mb-3 font-semibold">
+                                    <span className="font-rajdhani text-primary text-sm uppercase tracking-widest mb-3 font-normal">
                                         {activeStep.tag}
                                     </span>
 
@@ -302,9 +296,9 @@ export default function CoreInnovationSection() {
                                         {activeStep.description}
                                     </p>
 
-                                    <div className="pt-6 border-t border-white/10">
+                                    <div className="pt-6 border-t border-white/10 w-full">
                                         <span className="block text-xs text-text/50 uppercase tracking-wider mb-2">Key Metric</span>
-                                        <div className="flex items-center gap-3">
+                                        <div className="flex items-center justify-end gap-3">
                                             <span className="font-orbitron text-2xl font-bold text-white">
                                                 {activeStep.highlight}
                                             </span>

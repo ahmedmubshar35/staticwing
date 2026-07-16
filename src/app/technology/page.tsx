@@ -4,7 +4,6 @@ import { usePassword } from "@/context/PasswordContext";
 import { useRouter } from "next/navigation";
 import Navbar from "@/components/ui/Navbar";
 import PageHero from "@/components/ui/PageHero";
-import DeepDiveCTA from "@/components/ui/DeepDiveCTA";
 import FeatureSection from "@/components/sections/FeatureSection";
 import FeatureSection2 from "@/components/sections/FeatureSection2";
 import PropulsionSection from "@/components/sections/PropulsionSection";
@@ -64,25 +63,21 @@ export default function TechnologyPage() {
   }
 
   return (
-    <div className="w-screen overflow-x-hidden">
+    <div className="w-screen overflow-x-clip">
       <Navbar />
       <PageHero
         title="Our"
         accentWord="Technology"
         subtitle="Discover the engineering innovations that make StaticWing the most advanced VTOL platform in its class."
+        ctaLabel="EXPLORE STATIC WING DEEP DIVE"
+        ctaHref="/deep-dive"
       />
-
-      <DeepDiveCTA />
 
       <FeatureSection />
       <FeatureSection2 />
 
-      <DeepDiveCTA eyebrow="Want the full technical breakdown?" label="VIEW THE DEEP DIVE" />
-
       <PropulsionSection />
       <StaticWingPerformance />
-
-      <DeepDiveCTA eyebrow="Curious how it all comes together?" label="SEE THE FULL DEEP DIVE" />
 
       <FeatureSection3 />
       <FeatureSection4 />

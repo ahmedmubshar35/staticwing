@@ -199,7 +199,7 @@ export default function OverviewSection() {
                   </div>
 
                   {/* Label */}
-                  <h3 className="font-rajdhani text-xl sm:text-2xl md:text-3xl font-semibold text-text tracking-wide uppercase mb-2">
+                  <h3 className="font-rajdhani text-xl sm:text-2xl md:text-3xl font-normal text-text tracking-wide uppercase mb-2">
                     {metric.label}
                   </h3>
 

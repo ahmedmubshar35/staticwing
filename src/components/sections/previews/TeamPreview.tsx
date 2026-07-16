@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "motion/react";
 
 export default function TeamPreview() {
@@ -26,7 +27,7 @@ export default function TeamPreview() {
       </div>
 
       <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 items-center">
           {/* Left - Team Visual */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -39,25 +40,28 @@ export default function TeamPreview() {
               {/* Team avatars arrangement */}
               <div className="flex items-center gap-2">
                 {[
-                  { initials: "NB", gradient: "from-primary to-accent" },
-                  { initials: "PO", gradient: "from-accent to-primary" },
-                  { initials: "OS", gradient: "from-accent to-accent/60" },
-                  { initials: "PA", gradient: "from-primary to-primary/60" },
+                  { name: "NB", photo: "/team/1.png" },
+                  { name: "PO", photo: "/team/2.webp" },
+                  { name: "OS", photo: "/team/3.jpg" },
+                  { name: "PA", photo: "/team/4.jpg" },
                 ].map((member, i) => (
                   <motion.div
-                    key={member.initials}
+                    key={member.name}
                     initial={{ opacity: 0, scale: 0.8 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.5, delay: 0.2 + i * 0.1 }}
                     viewport={{ once: true }}
-                    className={`w-16 h-16 md:w-20 md:h-20 rounded-full bg-linear-to-br ${member.gradient} border-2 border-background flex items-center justify-center ${
+                    className={`relative w-16 h-16 md:w-20 md:h-20 rounded-full border-2 border-background overflow-hidden ${
                       i > 0 ? "-ml-4" : ""
                     }`}
                     style={{ zIndex: 4 - i }}
                   >
-                    <span className="font-orbitron text-sm md:text-base font-bold text-white">
-                      {member.initials}
-                    </span>
+                    <Image
+                      src={member.photo}
+                      alt={`Team member ${member.name}`}
+                      fill
+                      className="object-cover object-top"
+                    />
                   </motion.div>
                 ))}
                 <motion.div

@@ -113,7 +113,7 @@ export default function PropulsionSection() {
       </div>
 
       {/* Section Header */}
-      <div className="relative z-10 pt-20 pb-10 px-6 lg:px-8 max-w-7xl mx-auto">
+      <div className="relative z-30 pt-20 pb-10 px-6 lg:px-8 max-w-7xl mx-auto">
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -225,7 +225,7 @@ export default function PropulsionSection() {
             </div>
 
             {/* Content Cards */}
-            <div className="space-y-6 lg:space-y-8 lg:min-h-screen lg:py-[50vh]">
+            <div className="space-y-6 lg:space-y-8 lg:min-h-screen lg:pt-[20vh] lg:pb-[50vh]">
               {propulsionSteps.map((step, index) => (
                 <motion.div
                   key={step.id}
