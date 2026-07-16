@@ -45,9 +45,9 @@ export default function HeroSection() {
           <source src="/hero.mp4" type="video/mp4" />
         </video>
 
-        {/* Dark Overlay */}
-        <div className="absolute inset-0 bg-linear-to-b from-background/70 via-background/50 to-background" />
-        <div className="absolute inset-0 bg-black/40" />
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-linear-to-b from-background/70 via-background/55 to-background/90" />
+        <div className="absolute inset-0 bg-black/35" />
       </motion.div>
 
       {/* Hero Content with Parallax */}
@@ -82,7 +82,7 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 30 }}
           animate={isLoaded ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 1, delay: 0.35, ease: "easeOut" }}
-          className="font-rajdhani text-xl md:text-2xl font-semibold text-white max-w-2xl mb-8 leading-snug"
+          className="font-rajdhani text-xl md:text-2xl font-normal text-white max-w-2xl mb-8 leading-snug"
         >
           A next-generation VTOL aircraft for heavy payload logistics and industrial operations.
         </motion.p>
@@ -101,7 +101,7 @@ export default function HeroSection() {
               Discover StaticWing
             </span>
             <div className="absolute inset-0 border-2 border-accent rounded-sm" />
-            <div className="absolute inset-0 bg-accent transform translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
+            <div className="absolute inset-0 bg-accent transform scale-x-0 origin-left group-hover:scale-x-100 transition-transform duration-300" />
           </button>
         </motion.div>
 

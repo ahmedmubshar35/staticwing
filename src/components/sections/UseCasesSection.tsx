@@ -247,16 +247,16 @@ export default function UseCasesSection() {
             viewport={{ once: true, amount: 0 }}
             className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6"
           >
-            <div className="text-center p-4 sm:p-6 bg-surface/20 rounded-xl border border-white/5">
-              <span className="font-orbitron text-2xl sm:text-3xl md:text-4xl font-bold text-accent block">∞</span>
+            <div className="flex items-center justify-center gap-3 p-4 sm:p-6">
+              <span className="font-orbitron text-6xl sm:text-7xl font-bold text-accent">∞</span>
               <span className="font-rajdhani text-xs sm:text-sm text-text/60 uppercase tracking-wider">Adaptability</span>
             </div>
-            <div className="text-center p-4 sm:p-6 bg-surface/20 rounded-xl border border-white/5">
-              <span className="font-orbitron text-2xl sm:text-3xl md:text-4xl font-bold text-primary block">1000+</span>
+            <div className="flex items-center justify-center gap-3 p-4 sm:p-6">
+              <span className="font-orbitron text-2xl sm:text-3xl font-bold text-primary">1000+</span>
               <span className="font-rajdhani text-xs sm:text-sm text-text/60 uppercase tracking-wider">kg Payload</span>
             </div>
-            <div className="text-center p-4 sm:p-6 bg-surface/20 rounded-xl border border-white/5">
-              <span className="font-orbitron text-2xl sm:text-3xl md:text-4xl font-bold text-white block">24/7</span>
+            <div className="flex items-center justify-center gap-3 p-4 sm:p-6">
+              <span className="font-orbitron text-2xl sm:text-3xl font-bold text-white">24/7</span>
               <span className="font-rajdhani text-xs sm:text-sm text-text/60 uppercase tracking-wider">Operational</span>
             </div>
           </motion.div>

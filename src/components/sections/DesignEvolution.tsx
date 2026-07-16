@@ -3,7 +3,6 @@
 import { useRef, useState } from "react";
 import Image from "next/image";
 import { motion, useScroll, useTransform, AnimatePresence } from "motion/react";
-import KeyTakeaway from "@/components/ui/KeyTakeaway";
 
 const evolutionStages = [
     {
@@ -81,18 +80,14 @@ export default function DesignEvolution() {
                         Iteration & Improvement
                     </span>
                     <h2 className="font-orbitron text-3xl md:text-5xl font-bold text-white mb-6">
-                        DESIGN <span className="text-primary">EVOLUTION</span>
+                        DESIGN <br /> <span className="text-primary">EVOLUTION</span>
                     </h2>
                     <p className="max-w-2xl text-text font-inter text-lg mb-6">
                         The journey from theoretical concept to validated reality.
                     </p>
-                    <KeyTakeaway className="max-w-2xl">
-                        Seven phases carry StaticWing from an early lift concept through CFD-refined aerodynamics to a
-                        fully validated, 6DoF flight-control-ready configuration.
-                    </KeyTakeaway>
                 </motion.div>
 
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
                     {/* Left: Navigation/Timeline */}
                     <div className="lg:col-span-4 space-y-4">
                         {evolutionStages.map((stage, index) => (
@@ -122,7 +117,7 @@ export default function DesignEvolution() {
                     </div>
 
                     {/* Right: Display Area */}
-                    <div className="lg:col-span-8 bg-surface/10 rounded-3xl border border-white/10 p-2 lg:p-4 aspect-4/3 relative overflow-hidden">
+                    <div className="lg:col-span-8 lg:sticky lg:top-24 bg-surface/10 rounded-3xl border border-white/10 p-2 lg:p-4 aspect-4/3 relative overflow-hidden">
                         <AnimatePresence mode="wait">
                             <motion.div
                                 key={activeStage}
@@ -136,10 +131,10 @@ export default function DesignEvolution() {
                                     src={evolutionStages[activeStage].image}
                                     alt={evolutionStages[activeStage].title}
                                     fill
-                                    className="object-contain bg-black/40"
+                                    className="object-cover bg-black/40"
                                     priority
                                 />
-                                <div className="absolute bottom-0 left-0 right-0 p-6 bg-linear-to-t from-black/90 via-black/60 to-transparent">
+                                <div className="absolute bottom-0 left-0 right-0 px-6 pt-10 pb-3 bg-linear-to-t from-black/90 via-black/60 to-transparent">
                                     <p className="font-inter text-white/90 text-lg">
                                         {evolutionStages[activeStage].description}
                                     </p>

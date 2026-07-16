@@ -2,7 +2,30 @@
   "permissions": {
     "allow": [
       "Bash(node -e ' *)",
-      "Bash(npx next *)"
+      "Bash(npx next *)",
+      "Bash(curl -sI \"https://i.pravatar.cc/300?img=12\")",
+      "Bash(curl -sI \"https://images.unsplash.com\")",
+      "Bash(curl -sL \"https://i.pravatar.cc/300?img=12\" -o \"e:/Office Projects/StaticWing/public/team/member-1.jpg\")",
+      "Bash(curl -sL \"https://i.pravatar.cc/300?img=47\" -o \"e:/Office Projects/StaticWing/public/team/member-2.jpg\")",
+      "Bash(curl -sL \"https://i.pravatar.cc/300?img=25\" -o \"e:/Office Projects/StaticWing/public/team/member-3.jpg\")",
+      "Bash(curl -sL \"https://i.pravatar.cc/300?img=33\" -o \"e:/Office Projects/StaticWing/public/team/member-4.jpg\")",
+      "Bash(curl -v -sL \"https://i.pravatar.cc/300?img=12\" -o \"e:/Office Projects/StaticWing/public/team/member-1.jpg\")",
+      "Bash(echo \"EXIT: $?\")",
+      "Bash(curl -sL \"https://i.pravatar.cc/300?img=8\" -o \"e:/Office Projects/StaticWing/public/team/neil-baxter.jpg\")",
+      "Bash(curl -sL \"https://i.pravatar.cc/300?img=14\" -o \"e:/Office Projects/StaticWing/public/team/peter-oakland.jpg\")",
+      "Bash(curl -sL \"https://i.pravatar.cc/300?img=51\" -o \"e:/Office Projects/StaticWing/public/team/oliviu-sugar-gabor.jpg\")",
+      "Bash(curl -sL \"https://i.pravatar.cc/300?img=52\" -o \"e:/Office Projects/StaticWing/public/team/pedram-asef.jpg\")",
+      "Bash(curl -sL \"https://i.pravatar.cc/300?img=60\" -o \"e:/Office Projects/StaticWing/public/team/simon-chadowitz.jpg\")",
+      "Skill(run)",
+      "Skill(run:*)",
+      "Bash(curl -sf http://localhost:3000)",
+      "Bash(pkill -f \"next dev\")",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:3000/technology)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:3000/team)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:3000/deep-dive)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:3000/3d-render)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:3000)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:3000/applications)"
     ]
   }
 }

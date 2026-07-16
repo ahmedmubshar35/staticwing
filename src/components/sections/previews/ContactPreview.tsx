@@ -26,7 +26,7 @@ export default function ContactPreview() {
       </div>
 
       <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 items-center">
           {/* Left - Content */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -74,7 +74,7 @@ export default function ContactPreview() {
             viewport={{ once: true }}
             className="order-1 lg:order-2"
           >
-            <div className="relative w-full max-w-sm mx-auto lg:mx-0 lg:ml-auto bg-surface/30 rounded-2xl border border-white/10 p-6 overflow-hidden">
+            <div className="relative w-full max-w-sm mx-auto lg:mx-0 bg-surface/30 rounded-2xl border border-white/10 p-6 overflow-hidden">
               {/* Animated pulse */}
               <motion.div
                 animate={{ scale: [1, 1.05, 1], opacity: [0.3, 0, 0.3] }}
@@ -90,7 +90,7 @@ export default function ContactPreview() {
                   </svg>
                 </div>
                 <div>
-                  <h3 className="font-rajdhani text-white font-semibold uppercase tracking-wider">Contact Channels</h3>
+                  <h3 className="font-rajdhani text-white font-normal uppercase tracking-wider">Contact Channels</h3>
                   <p className="font-inter text-text/50 text-xs">Reach us directly</p>
                 </div>
               </div>

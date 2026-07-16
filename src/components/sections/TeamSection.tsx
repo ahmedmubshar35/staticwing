@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import Image from "next/image";
 import { motion, useScroll, useTransform } from "motion/react";
 
@@ -53,78 +53,33 @@ const partnerLogos = [
 ] as const;
 
 function PartnerSlider() {
-  const trackRef = useRef<HTMLDivElement>(null);
   const [isPaused, setIsPaused] = useState(false);
-
-  const scrollByAmount = (direction: 1 | -1) => {
-    const el = trackRef.current;
-    if (!el) return;
-    el.scrollBy({ left: direction * 200, behavior: "smooth" });
-  };
-
-  useEffect(() => {
-    if (isPaused) return;
-    const interval = setInterval(() => {
-      const el = trackRef.current;
-      if (!el) return;
-      const atEnd = el.scrollLeft + el.clientWidth >= el.scrollWidth - 4;
-      if (atEnd) {
-        el.scrollTo({ left: 0, behavior: "smooth" });
-      } else {
-        el.scrollBy({ left: 160, behavior: "smooth" });
-      }
-    }, 2600);
-    return () => clearInterval(interval);
-  }, [isPaused]);
+  const track = [...partnerLogos, ...partnerLogos];
 
   return (
     <div
-      className="relative"
+      className="relative overflow-hidden py-2"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
       onTouchStart={() => setIsPaused(true)}
+      onTouchEnd={() => setIsPaused(false)}
     >
       {/* Edge fades */}
-      <div className="pointer-events-none absolute inset-y-0 left-0 w-8 bg-linear-to-r from-surface/80 to-transparent z-10" />
-      <div className="pointer-events-none absolute inset-y-0 right-0 w-8 bg-linear-to-l from-surface/80 to-transparent z-10" />
+      <div className="pointer-events-none absolute inset-y-0 left-0 w-12 bg-linear-to-r from-background/60 to-transparent z-10" />
+      <div className="pointer-events-none absolute inset-y-0 right-0 w-12 bg-linear-to-l from-background/60 to-transparent z-10" />
 
       <div
-        ref={trackRef}
-        className="flex gap-3 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-1 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+        className="flex items-center gap-10 w-max animate-marquee"
+        style={{ animationPlayState: isPaused ? "paused" : "running" }}
       >
-        {partnerLogos.map((partner) => (
-          <div
-            key={partner.name}
-            className="flex items-center gap-2 px-4 py-3 bg-background/50 rounded-lg border border-white/5 whitespace-nowrap shrink-0 snap-start"
+        {track.map((partner, index) => (
+          <span
+            key={`${partner.name}-${index}`}
+            className="font-orbitron text-base sm:text-lg font-bold text-white/60 tracking-wide whitespace-nowrap hover:text-white transition-colors duration-300"
           >
-            <div className={`w-2 h-2 rounded-full ${partner.type === "research" ? "bg-accent" : "bg-primary"}`} />
-            <span className="font-rajdhani text-xs sm:text-sm text-text/70">{partner.name}</span>
-          </div>
+            {partner.name}
+          </span>
         ))}
-      </div>
-
-      {/* Controls */}
-      <div className="flex items-center justify-end gap-2 mt-3">
-        <button
-          type="button"
-          onClick={() => scrollByAmount(-1)}
-          aria-label="Previous partners"
-          className="w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white/10 hover:border-accent/30 transition-colors duration-300"
-        >
-          <svg className="w-4 h-4 text-text/70" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-          </svg>
-        </button>
-        <button
-          type="button"
-          onClick={() => scrollByAmount(1)}
-          aria-label="Next partners"
-          className="w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white/10 hover:border-accent/30 transition-colors duration-300"
-        >
-          <svg className="w-4 h-4 text-text/70" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
-        </button>
       </div>
     </div>
   );
@@ -193,6 +148,7 @@ export default function TeamSection() {
               <div className="relative h-full bg-linear-to-br from-primary/10 via-surface/30 to-transparent backdrop-blur-sm rounded-2xl border border-primary/20 p-6 hover:border-primary/40 transition-all duration-300">
                 <div className="flex items-start gap-5">
                   <TeamAvatar
+                    image="/team/neil-baxter.jpg"
                     alt="Neil Baxter"
                     size="lg"
                     containerClassName="bg-linear-to-br from-primary to-accent ring-2 ring-white/10"
@@ -207,7 +163,7 @@ export default function TeamSection() {
                     </p>
                   </div>
                 </div>
-                <div className="flex flex-wrap gap-2 mt-4 pt-4 border-t border-white/5">
+                <div className="flex flex-wrap gap-2 mt-4 pt-4 border-t border-white/5 pl-[84px] sm:pl-[100px]">
                   <span className="px-2 py-1 bg-white/5 rounded text-xs font-rajdhani text-text/50">15+ Years Aviation</span>
                   <span className="px-2 py-1 bg-white/5 rounded text-xs font-rajdhani text-text/50">Commercial Pilot</span>
                   <span className="px-2 py-1 bg-white/5 rounded text-xs font-rajdhani text-text/50">Tech Lead</span>
@@ -225,6 +181,7 @@ export default function TeamSection() {
               <div className="relative h-full bg-linear-to-bl from-accent/10 via-surface/30 to-transparent backdrop-blur-sm rounded-2xl border border-accent/20 p-6 hover:border-accent/40 transition-all duration-300">
                 <div className="flex items-start gap-5">
                   <TeamAvatar
+                    image="/team/peter-oakland.jpg"
                     alt="Peter Oakland"
                     size="lg"
                     containerClassName="bg-linear-to-br from-accent to-primary ring-2 ring-white/10"
@@ -238,7 +195,7 @@ export default function TeamSection() {
                     </p>
                   </div>
                 </div>
-                <div className="flex flex-wrap gap-2 mt-4 pt-4 border-t border-white/5">
+                <div className="flex flex-wrap gap-2 mt-4 pt-4 border-t border-white/5 pl-[84px] sm:pl-[100px]">
                   <span className="px-2 py-1 bg-white/5 rounded text-xs font-rajdhani text-text/50">25+ Years Experience</span>
                   <span className="px-2 py-1 bg-white/5 rounded text-xs font-rajdhani text-text/50">IP Research</span>
                   <span className="px-2 py-1 bg-white/5 rounded text-xs font-rajdhani text-text/50">Entrepreneur</span>
@@ -279,6 +236,7 @@ export default function TeamSection() {
               <div className="relative h-full bg-surface/30 backdrop-blur-sm rounded-xl border border-white/10 p-5 hover:border-accent/30 transition-all duration-300">
                 <div className="flex items-start gap-4">
                   <TeamAvatar
+                    image="/team/oliviu-sugar-gabor.jpg"
                     alt="Prof. Oliviu Sugar-Gabor"
                     size="md"
                     containerClassName="bg-accent/10 border border-accent/20 ring-2 ring-accent/10"
@@ -292,7 +250,7 @@ export default function TeamSection() {
                     </p>
                   </div>
                 </div>
-                <div className="flex flex-wrap gap-2 mt-4">
+                <div className="flex flex-wrap gap-2 mt-4 pl-16">
                   <span className="px-2 py-0.5 bg-accent/10 border border-accent/20 rounded text-xs font-rajdhani text-accent/80">CFD</span>
                   <span className="px-2 py-0.5 bg-accent/10 border border-accent/20 rounded text-xs font-rajdhani text-accent/80">Aerodynamics</span>
                   <span className="px-2 py-0.5 bg-accent/10 border border-accent/20 rounded text-xs font-rajdhani text-accent/80">Novel Aircraft</span>
@@ -310,6 +268,7 @@ export default function TeamSection() {
               <div className="relative h-full bg-surface/30 backdrop-blur-sm rounded-xl border border-white/10 p-5 hover:border-primary/30 transition-all duration-300">
                 <div className="flex items-start gap-4">
                   <TeamAvatar
+                    image="/team/pedram-asef.jpg"
                     alt="Prof. Pedram Asef"
                     size="md"
                     containerClassName="bg-primary/10 border border-primary/20 ring-2 ring-primary/10"
@@ -323,7 +282,7 @@ export default function TeamSection() {
                     </p>
                   </div>
                 </div>
-                <div className="flex flex-wrap gap-2 mt-4">
+                <div className="flex flex-wrap gap-2 mt-4 pl-16">
                   <span className="px-2 py-0.5 bg-primary/10 border border-primary/20 rounded text-xs font-rajdhani text-primary/80">Electric Propulsion</span>
                   <span className="px-2 py-0.5 bg-primary/10 border border-primary/20 rounded text-xs font-rajdhani text-primary/80">IEEE Senior</span>
                   <span className="px-2 py-0.5 bg-primary/10 border border-primary/20 rounded text-xs font-rajdhani text-primary/80">£5M+ R&D</span>
@@ -362,22 +321,23 @@ export default function TeamSection() {
               viewport={{ once: true, amount: 0 }}
             >
               <div className="relative h-full bg-surface/20 backdrop-blur-sm rounded-xl border border-white/10 p-5 hover:border-white/20 transition-all duration-300">
-                <div className="flex items-center gap-4 mb-3">
+                <div className="flex items-start gap-4">
                   <TeamAvatar
+                    image="/team/simon-chadowitz.jpg"
                     alt="Simon Chadowitz"
                     size="sm"
                     containerClassName="bg-white/5 border border-white/10 ring-2 ring-white/5"
                     iconClassName="text-white/60"
                   />
-                  <div>
+                  <div className="flex-1 min-w-0">
                     <h3 className="font-orbitron text-sm sm:text-base font-bold text-white">Simon Chadowitz</h3>
-                    <p className="font-rajdhani text-xs text-text/40 uppercase tracking-wider">Investor & Advisor</p>
+                    <p className="font-rajdhani text-xs text-text/40 uppercase tracking-wider mb-3">Investor & Advisor</p>
+                    <p className="font-inter text-xs sm:text-sm text-text/50 leading-relaxed">
+                      Law Firm Partner – investor and head of business strategy.
+                    </p>
                   </div>
                 </div>
-                <p className="font-inter text-xs sm:text-sm text-text/50 leading-relaxed">
-                  Law Firm Partner – investor and head of business strategy.
-                </p>
-                <div className="mt-3 pt-3 border-t border-white/5">
+                <div className="mt-3 pt-3 border-t border-white/5 pl-14">
                   <span className="px-2 py-1 bg-white/5 rounded text-xs font-rajdhani text-text/40">Legal & Strategy</span>
                 </div>
               </div>
@@ -391,22 +351,23 @@ export default function TeamSection() {
               viewport={{ once: true, amount: 0 }}
             >
               <div className="relative h-full bg-surface/20 backdrop-blur-sm rounded-xl border border-white/10 p-5 hover:border-white/20 transition-all duration-300">
-                <div className="flex items-center gap-4 mb-3">
+                <div className="flex items-start gap-4">
                   <TeamAvatar
+                    image="/team/saul-henry-lewin.jpg"
                     alt="Saul Henry Lewin"
                     size="sm"
                     containerClassName="bg-white/5 border border-white/10 ring-2 ring-white/5"
                     iconClassName="text-white/60"
                   />
-                  <div>
+                  <div className="flex-1 min-w-0">
                     <h3 className="font-orbitron text-sm sm:text-base font-bold text-white">Saul Henry Lewin</h3>
-                    <p className="font-rajdhani text-xs text-text/40 uppercase tracking-wider">Business Advisor</p>
+                    <p className="font-rajdhani text-xs text-text/40 uppercase tracking-wider mb-3">Business Advisor</p>
+                    <p className="font-inter text-xs sm:text-sm text-text/50 leading-relaxed">
+                      Entrepreneur, Founder of Wingstop UK. Business & Strategy Advisor and Investor.
+                    </p>
                   </div>
                 </div>
-                <p className="font-inter text-xs sm:text-sm text-text/50 leading-relaxed">
-                  Entrepreneur, Founder of Wingstop UK. Business & Strategy Advisor and Investor.
-                </p>
-                <div className="mt-3 pt-3 border-t border-white/5">
+                <div className="mt-3 pt-3 border-t border-white/5 pl-14">
                   <span className="px-2 py-1 bg-white/5 rounded text-xs font-rajdhani text-text/40">Business Growth</span>
                 </div>
               </div>
@@ -414,9 +375,8 @@ export default function TeamSection() {
           </div>
         </div>
 
-        {/* Group 4: Engineering Team & Partnerships */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
-          {/* Engineering Team */}
+        {/* Group 4: Engineering Team */}
+        <div>
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -452,38 +412,34 @@ export default function TeamSection() {
               </div>
             </div>
           </motion.div>
-
-          {/* University Partnerships */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            viewport={{ once: true, amount: 0 }}
-          >
-            <div className="relative h-full bg-linear-to-bl from-accent/10 to-primary/5 backdrop-blur-sm rounded-2xl border border-accent/20 p-6 hover:border-accent/40 transition-all duration-300">
-              <div className="flex items-center gap-4 mb-5">
-                <div className="w-14 h-14 rounded-xl bg-accent/20 border border-accent/30 flex items-center justify-center">
-                  <svg className="w-7 h-7 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 14l9-5-9-5-9 5 9 5z" />
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
-                  </svg>
-                </div>
-                <div>
-                  <h2 className="font-orbitron text-xl font-bold text-white">Partnerships</h2>
-                  <p className="font-rajdhani text-xs text-accent uppercase tracking-wider">Research & Development</p>
-                </div>
-              </div>
-
-              <p className="font-inter text-sm text-text/70 leading-relaxed mb-5">
-                Collaborating with leading universities and technology partners to push the boundaries of VTOL innovation.
-              </p>
-
-              <PartnerSlider />
-            </div>
-          </motion.div>
         </div>
 
       </div>
+
+      {/* Full-width Partnerships banner */}
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true, amount: 0 }}
+        className="relative z-10 mt-16 sm:mt-20 py-12 sm:py-16 bg-linear-to-r from-accent/10 via-surface/40 to-primary/10 border-y border-accent/20"
+      >
+        <div className="max-w-3xl mx-auto px-6 text-center mb-10">
+          <div className="inline-flex items-center justify-center w-14 h-14 rounded-xl bg-accent/20 border border-accent/30 mb-4">
+            <svg className="w-7 h-7 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 14l9-5-9-5-9 5 9 5z" />
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
+            </svg>
+          </div>
+          <p className="font-rajdhani text-xs sm:text-sm text-accent uppercase tracking-wider mb-3">Research & Development</p>
+          <h2 className="font-orbitron text-2xl sm:text-3xl font-bold text-white mb-4">Partnerships</h2>
+          <p className="font-inter text-sm sm:text-base text-text/70 leading-relaxed">
+            Collaborating with leading universities and technology partners to push the boundaries of VTOL innovation.
+          </p>
+        </div>
+
+        <PartnerSlider />
+      </motion.div>
 
       {/* Decorative line */}
       <div className="absolute bottom-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-surface to-transparent" />

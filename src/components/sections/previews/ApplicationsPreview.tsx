@@ -4,10 +4,34 @@ import Link from "next/link";
 import { motion } from "motion/react";
 
 const useCaseIcons = [
-  { name: "Rescue", color: "text-red-400", bgColor: "bg-red-500/10", borderColor: "border-red-500/30" },
-  { name: "Logistics", color: "text-primary", bgColor: "bg-primary/10", borderColor: "border-primary/30" },
-  { name: "Military", color: "text-slate-400", bgColor: "bg-slate-500/10", borderColor: "border-slate-500/30" },
-  { name: "Construction", color: "text-amber-400", bgColor: "bg-amber-500/10", borderColor: "border-amber-500/30" },
+  {
+    name: "Rescue",
+    description: "Emergency response, search & rescue, disaster relief, and medical delivery.",
+    color: "text-red-400",
+    bgColor: "bg-red-500/10",
+    borderColor: "border-red-500/30",
+  },
+  {
+    name: "Logistics",
+    description: "Autonomous cargo delivery, supply chain optimization, and last-mile solutions.",
+    color: "text-primary",
+    bgColor: "bg-primary/10",
+    borderColor: "border-primary/30",
+  },
+  {
+    name: "Military",
+    description: "Autonomous reconnaissance, surveillance, and tactical mission operations.",
+    color: "text-slate-400",
+    bgColor: "bg-slate-500/10",
+    borderColor: "border-slate-500/30",
+  },
+  {
+    name: "Construction",
+    description: "Site mapping, progress monitoring, inspection, and material transport.",
+    color: "text-amber-400",
+    bgColor: "bg-amber-500/10",
+    borderColor: "border-amber-500/30",
+  },
 ];
 
 export default function ApplicationsPreview() {
@@ -73,41 +97,57 @@ export default function ApplicationsPreview() {
             </Link>
           </motion.div>
 
-          {/* Right - Icons Grid */}
+          {/* Right - Use Case Cards */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true, amount: 0 }}
-            className="flex justify-center lg:justify-end order-1 lg:order-2"
+            className="order-1 lg:order-2"
           >
-            <div className="grid grid-cols-2 gap-4">
+            <div className="flex flex-col gap-4">
               {useCaseIcons.map((item, index) => (
                 <motion.div
                   key={item.name}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
+                  initial={{ opacity: 0, x: 20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
                   viewport={{ once: true, amount: 0 }}
-                  className={`w-28 h-28 md:w-32 md:h-32 ${item.bgColor} ${item.borderColor} border rounded-xl flex flex-col items-center justify-center gap-2 hover:scale-105 transition-transform duration-300`}
                 >
-                  <svg className={`w-8 h-8 ${item.color}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    {item.name === "Rescue" && (
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-                    )}
-                    {item.name === "Logistics" && (
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
-                    )}
-                    {item.name === "Military" && (
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                    )}
-                    {item.name === "Construction" && (
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-                    )}
-                  </svg>
-                  <span className={`font-rajdhani text-xs uppercase tracking-wider ${item.color}`}>
-                    {item.name}
-                  </span>
+                <Link
+                  href="/applications"
+                  className={`group flex items-center gap-4 p-4 bg-surface/20 border border-white/10 ${item.borderColor} border-l-4 rounded-lg hover:bg-surface/40 transition-colors duration-300`}
+                >
+                  <div className={`w-12 h-12 rounded-lg ${item.bgColor} border ${item.borderColor} flex items-center justify-center shrink-0`}>
+                    <svg className={`w-6 h-6 ${item.color}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      {item.name === "Rescue" && (
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                      )}
+                      {item.name === "Logistics" && (
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                      )}
+                      {item.name === "Military" && (
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                      )}
+                      {item.name === "Construction" && (
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                      )}
+                    </svg>
+                  </div>
+
+                  <div className="flex-1">
+                    <h4 className="font-rajdhani text-white font-semibold uppercase tracking-wide">
+                      {item.name}
+                    </h4>
+                    <p className="font-inter text-text/60 text-sm">{item.description}</p>
+                  </div>
+
+                  <div className={`w-9 h-9 rounded-full border ${item.borderColor} flex items-center justify-center shrink-0 group-hover:${item.bgColor} transition-colors duration-300`}>
+                    <svg className={`w-4 h-4 ${item.color} group-hover:translate-x-0.5 transition-transform duration-300`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                  </div>
+                </Link>
                 </motion.div>
               ))}
             </div>

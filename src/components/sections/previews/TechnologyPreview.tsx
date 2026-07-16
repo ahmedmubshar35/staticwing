@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "motion/react";
 
 export default function TechnologyPreview() {
@@ -26,7 +27,7 @@ export default function TechnologyPreview() {
       </div>
 
       <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-[auto_1fr] gap-6 lg:gap-12 items-center">
           {/* Left - Icon/Visual */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -36,26 +37,27 @@ export default function TechnologyPreview() {
             className="flex justify-center lg:justify-start"
           >
             <div className="relative">
-              {/* Tech icon container */}
-              <div className="w-48 h-48 md:w-64 md:h-64 bg-surface/30 rounded-2xl border border-white/10 flex items-center justify-center relative overflow-hidden">
+              {/* Tech image container */}
+              <div className="w-56 h-56 md:w-64 md:h-64 lg:w-72 lg:h-72 bg-surface/30 rounded-2xl border border-white/10 flex items-center justify-center relative overflow-hidden">
                 {/* Animated rings */}
                 <motion.div
                   animate={{ rotate: 360 }}
                   transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                  className="absolute inset-4 border border-primary/20 rounded-full"
+                  className="absolute inset-4 border border-primary/20 rounded-full pointer-events-none z-10"
                 />
                 <motion.div
                   animate={{ rotate: -360 }}
                   transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-                  className="absolute inset-8 border border-accent/20 rounded-full"
+                  className="absolute inset-8 border border-accent/20 rounded-full pointer-events-none z-10"
                 />
 
-                {/* Icon */}
-                <div className="relative z-10 w-20 h-20 bg-primary/10 border border-primary/30 rounded-xl flex items-center justify-center">
-                  <svg className="w-10 h-10 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8.25 3v1.5M4.5 8.25H3m18 0h-1.5M4.5 12H3m18 0h-1.5m-15 3.75H3m18 0h-1.5M8.25 19.5V21M12 3v1.5m0 15V21m3.75-18v1.5m0 15V21M15 4.5H9A2.25 2.25 0 006.75 6.75v10.5A2.25 2.25 0 009 19.5h6a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0015 4.5z" />
-                  </svg>
-                </div>
+                {/* Technology image */}
+                <Image
+                  src="/static-wing/custom-duct-design-for-distribution-of-flow-stream.png"
+                  alt="StaticWing Propulsion Technology"
+                  fill
+                  className="object-contain p-6"
+                />
               </div>
             </div>
           </motion.div>

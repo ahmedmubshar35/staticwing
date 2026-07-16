@@ -368,7 +368,7 @@ export default function ComponentsExploded() {
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="w-full aspect-[16/10] rounded-2xl overflow-hidden border border-white/10 bg-black/40 relative"
+            className="w-full aspect-[16/7] rounded-2xl overflow-hidden border border-white/10 bg-black/40 relative"
           >
             {inView ? (
             <Suspense fallback={<LoadingFallback />}>

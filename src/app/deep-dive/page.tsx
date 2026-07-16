@@ -1,10 +1,11 @@
 "use client";
 
-import { useRef, useEffect } from "react";
-import { motion, useScroll, useTransform } from "motion/react";
+import { useEffect } from "react";
+import { motion } from "motion/react";
 import { usePassword } from "@/context/PasswordContext";
 import { useRouter } from "next/navigation";
 import Navbar from "@/components/ui/Navbar";
+import PageHero from "@/components/ui/PageHero";
 import Footer from "@/components/sections/Footer";
 import DesignEvolution from "@/components/sections/DesignEvolution";
 import TechnicalDeepDive from "@/components/sections/TechnicalDeepDive";
@@ -14,12 +15,6 @@ import CoreInnovationSection from "@/components/sections/CoreInnovationSection";
 export default function StaticWingPage() {
     const router = useRouter();
     const { authorized, isLoading } = usePassword();
-    const heroRef = useRef<HTMLDivElement>(null);
-    const { scrollYProgress } = useScroll({
-        target: heroRef,
-        offset: ["start start", "end start"]
-    });
-    const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
 
     useEffect(() => {
         if (!isLoading && !authorized) {
@@ -58,65 +53,62 @@ export default function StaticWingPage() {
                     </h2>
                     <p className="text-text font-inter">Loading...</p>
                 </div>
-                {/* Hidden ref element to satisfy useScroll */}
-                <div ref={heroRef} style={{ display: 'none' }} />
             </div>
         );
     }
 
     return (
-        <div className="w-screen overflow-x-hidden bg-background">
+        <div className="w-screen overflow-x-clip bg-background">
             <Navbar />
 
-            {/* Hero Section */}
-            <section ref={heroRef} className="relative h-[80vh] flex items-center justify-center overflow-hidden">
-                {/* Background Video or Image would go here - using simple gradient for now matching theme */}
-                <div className="absolute inset-0 bg-background">
-                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(34,211,238,0.15)_0%,transparent_50%)]" />
-                    <div className="absolute top-0 w-full h-px bg-linear-to-r from-transparent via-white/10 to-transparent" />
-                </div>
-
-                <motion.div style={{ y }} className="relative z-10 text-center px-6">
-                    <motion.span
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        className="font-rajdhani text-accent text-sm md:text-base tracking-[0.5em] uppercase block mb-6"
-                    >
-                        Next Gen Aerodynamics
-                    </motion.span>
-                    <motion.h1
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.1 }}
-                        className="font-orbitron text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 tracking-tight"
-                    >
-                        STATIC<span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-accent">WING</span>
-                    </motion.h1>
-                    <motion.p
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.2 }}
-                        className="max-w-2xl mx-auto text-white font-rajdhani font-semibold text-xl md:text-2xl leading-snug"
-                    >
-                        Lift generation without forward velocity. Inspired by nature, engineered for the future of urban flight.
-                    </motion.p>
-                </motion.div>
-            </section>
+            <PageHero
+                title="STATIC"
+                accentWord="WING"
+                subtitle="Lift generation without forward velocity. Inspired by nature, engineered for the future of urban flight."
+                joined
+            />
 
             {/* Intro Section */}
             <section className="relative py-24 bg-background">
-                <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
+                <div className="max-w-6xl mx-auto px-6 lg:px-8 text-center">
                     <h2 className="font-orbitron text-3xl md:text-5xl font-bold text-white mb-8">
-                        WHAT IS THE <br /><span className="text-primary">STATIC WING?</span>
+                        WHAT IS THE STATIC <br /><span className="text-primary">WING?</span>
                     </h2>
-                    <div className="prose prose-lg prose-invert text-text/90 font-inter mx-auto">
-                        <p className="mb-6">
-                            The StaticWing is an unconventional lifting configuration designed to produce aerodynamic lift at low or near-zero forward velocity. In contrast to traditional fixed-wing aircraft, which rely on translational airflow, the StaticWing leverages directed airflow and engineered pressure gradients across the lifting surfaces. As a result, the system can achieve hover-capable lift generation, extremely short takeoff distances, and elevated lift coefficients without operating at extreme angles of attack.
-                        </p>
-                        <p>
-                            This allows for hover and near-hover lift generation, extremely short takeoffs, and high lift coefficients without excessive angles of attack.
-                        </p>
+                </div>
+
+                {/* Credibility Stats */}
+                <div className="max-w-6xl mx-auto px-6 lg:px-8 mt-16 text-center">
+                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6">
+                        <div>
+                            <span className="font-orbitron text-3xl sm:text-4xl font-bold text-white block mb-1">5</span>
+                            <p className="font-inter text-sm text-text/60">Aerospace engineers on the core team</p>
+                        </div>
+                        <div>
+                            <span className="font-orbitron text-3xl sm:text-4xl font-bold text-primary block mb-1">1,000+ kg</span>
+                            <p className="font-inter text-sm text-text/60">Payload capacity, fully loaded</p>
+                        </div>
+                        <div>
+                            <p className="font-rajdhani text-xs text-accent uppercase tracking-widest mb-3">Research Partners</p>
+                            <div className="flex -space-x-2 justify-center">
+                                {["UC", "CR", "SA", "SC", "BB"].map((initial) => (
+                                    <span
+                                        key={initial}
+                                        className="w-10 h-10 rounded-full bg-background border border-accent/30 flex items-center justify-center text-xs font-rajdhani font-semibold text-accent"
+                                    >
+                                        {initial}
+                                    </span>
+                                ))}
+                            </div>
+                        </div>
+                        <div>
+                            <span className="font-orbitron text-3xl sm:text-4xl font-bold text-accent block mb-1">41.5°</span>
+                            <p className="font-inter text-sm text-text/60">Rear deflection enabling pure VTOL, no runway required</p>
+                        </div>
                     </div>
+
+                    <p className="font-inter text-text/70 max-w-3xl mx-auto mt-10 pt-8 border-t border-white/5 leading-relaxed">
+                        The StaticWing is an unconventional lifting configuration that produces aerodynamic lift at low or near-zero forward velocity — enabling hover-capable lift, extremely short takeoffs, and high lift coefficients without extreme angles of attack. Backed by a five-person aerospace engineering team, £5M+ in R&D project leadership, and research partnerships with UCL, Cranfield University, and Salford University, StaticWing pairs academic rigor with hands-on VTOL engineering.
+                    </p>
                 </div>
             </section>
 
@@ -128,7 +120,7 @@ export default function StaticWingPage() {
                             <span className="font-rajdhani text-accent text-sm tracking-[0.3em] uppercase mb-4 block">
                                 Biomimicry
                             </span>
-                            <h2 className="font-orbitron text-3xl md:text-4xl font-bold text-white mb-6">
+                            <h2 className="font-orbitron text-3xl md:text-5xl font-bold text-white mb-6">
                                 INSPIRED BY <br /><span className="text-primary">NATURE</span>
                             </h2>
                             <div className="prose prose-invert text-text font-inter">

@@ -269,34 +269,14 @@ export default function ModelViewer() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="flex items-center justify-between mb-6"
+          className="mb-6"
         >
-          <div>
-            <h2 className="font-orbitron text-xl md:text-2xl font-bold text-white">
-              Interactive Model
-            </h2>
-            <p className="font-inter text-sm text-text/60 mt-1">
-              Click and drag to rotate &middot; Click a hotspot to explore
-            </p>
-          </div>
-          <button
-            onClick={() => {
-              setAutoRotate(!autoRotate);
-              if (!autoRotate) setActiveHotspot(null);
-            }}
-            className={`flex items-center gap-2 px-4 py-2 rounded-full border text-sm font-rajdhani uppercase tracking-wider transition-all duration-300 ${
-              autoRotate
-                ? "bg-primary/10 border-primary/30 text-primary"
-                : "bg-surface/30 border-white/10 text-text/50 hover:text-white hover:border-white/20"
-            }`}
-          >
-            <span
-              className={`w-2 h-2 rounded-full ${
-                autoRotate ? "bg-primary animate-pulse" : "bg-text/30"
-              }`}
-            />
-            Auto-Rotate
-          </button>
+          <h2 className="font-orbitron text-xl md:text-2xl font-bold text-white">
+            Interactive Model
+          </h2>
+          <p className="font-inter text-sm text-text/60 mt-1">
+            Click and drag to rotate &middot; Click a hotspot to explore
+          </p>
         </motion.div>
 
         <div>
@@ -306,7 +286,7 @@ export default function ModelViewer() {
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="relative w-full aspect-[16/10] rounded-2xl overflow-hidden border border-white/10 bg-black/40"
+            className="relative w-full aspect-[16/7] rounded-2xl overflow-hidden border border-white/10 bg-black/40"
           >
             {inView ? (
             <Suspense fallback={<LoadingFallback />}>
@@ -360,33 +340,55 @@ export default function ModelViewer() {
               <LoadingFallback />
             )}
 
-            <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-black/30 to-transparent pointer-events-none" />
+            <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-black/60 to-transparent pointer-events-none" />
+
+            {/* Auto-Rotate toggle */}
+            <button
+              onClick={() => {
+                setAutoRotate(!autoRotate);
+                if (!autoRotate) setActiveHotspot(null);
+              }}
+              className={`absolute top-4 right-4 z-20 flex items-center gap-2 px-4 py-2 rounded-full border text-xs font-rajdhani uppercase tracking-wider backdrop-blur-md transition-all duration-300 ${
+                autoRotate
+                  ? "bg-accent/10 border-accent/30 text-accent"
+                  : "bg-surface/50 border-white/10 text-text/50 hover:text-white hover:border-white/20"
+              }`}
+            >
+              <svg
+                className="w-3.5 h-3.5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
+                />
+              </svg>
+              {autoRotate ? "Stop Rotate" : "Auto Rotate"}
+            </button>
+
+            {/* Hotspot nav pills */}
+            <div className="absolute bottom-4 left-0 right-0 z-20 flex flex-wrap items-center justify-start gap-2 px-4">
+              {hotspots.map((hotspot) => (
+                <button
+                  key={hotspot.id}
+                  onClick={() => handleHotspotClick(hotspot.id)}
+                  className={`px-4 py-2 rounded-full border text-xs font-rajdhani uppercase tracking-wider backdrop-blur-md transition-all duration-300 ${
+                    activeHotspot === hotspot.id
+                      ? "bg-accent border-accent text-background shadow-md shadow-accent/20 hover:bg-accent/90"
+                      : "bg-accent/20 border-accent/40 text-accent hover:bg-accent/30"
+                  }`}
+                >
+                  {hotspot.label}
+                </button>
+              ))}
+            </div>
           </motion.div>
 
         </div>
-
-        {/* Hotspot nav pills */}
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          viewport={{ once: true }}
-          className="flex flex-wrap items-center justify-center gap-2 mt-6"
-        >
-          {hotspots.map((hotspot) => (
-            <button
-              key={hotspot.id}
-              onClick={() => handleHotspotClick(hotspot.id)}
-              className={`px-4 py-2 rounded-full border text-xs font-rajdhani uppercase tracking-wider transition-all duration-300 ${
-                activeHotspot === hotspot.id
-                  ? "bg-accent/10 border-accent/40 text-accent"
-                  : "bg-surface/30 border-white/10 text-text/50 hover:text-white hover:border-white/20"
-              }`}
-            >
-              {hotspot.label}
-            </button>
-          ))}
-        </motion.div>
       </div>
     </section>
   );
