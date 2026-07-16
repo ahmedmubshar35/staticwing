@@ -34,7 +34,7 @@ function TeamAvatar({
       className={`relative ${avatarSizeClasses[size]} rounded-full flex items-center justify-center shrink-0 overflow-hidden ${containerClassName}`}
     >
       {image ? (
-        <Image src={image} alt={alt} fill className="object-cover" />
+        <Image src={image} alt={alt} fill className="object-cover object-top" />
       ) : (
         <svg className={`${avatarIconSizeClasses[size]} ${iconClassName}`} fill="currentColor" viewBox="0 0 24 24">
           <path d="M12 12c2.761 0 5-2.239 5-5s-2.239-5-5-5-5 2.239-5 5 2.239 5 5 5zm0 2c-3.866 0-7 2.239-7 5v2h14v-2c0-2.761-3.134-5-7-5z" />
@@ -148,7 +148,7 @@ export default function TeamSection() {
               <div className="relative h-full bg-linear-to-br from-primary/10 via-surface/30 to-transparent backdrop-blur-sm rounded-2xl border border-primary/20 p-6 hover:border-primary/40 transition-all duration-300">
                 <div className="flex items-start gap-5">
                   <TeamAvatar
-                    image="/team/neil-baxter.jpg"
+                    image="/team/1.png"
                     alt="Neil Baxter"
                     size="lg"
                     containerClassName="bg-linear-to-br from-primary to-accent ring-2 ring-white/10"
@@ -181,7 +181,7 @@ export default function TeamSection() {
               <div className="relative h-full bg-linear-to-bl from-accent/10 via-surface/30 to-transparent backdrop-blur-sm rounded-2xl border border-accent/20 p-6 hover:border-accent/40 transition-all duration-300">
                 <div className="flex items-start gap-5">
                   <TeamAvatar
-                    image="/team/peter-oakland.jpg"
+                    image="/team/2.webp"
                     alt="Peter Oakland"
                     size="lg"
                     containerClassName="bg-linear-to-br from-accent to-primary ring-2 ring-white/10"
@@ -236,7 +236,7 @@ export default function TeamSection() {
               <div className="relative h-full bg-surface/30 backdrop-blur-sm rounded-xl border border-white/10 p-5 hover:border-accent/30 transition-all duration-300">
                 <div className="flex items-start gap-4">
                   <TeamAvatar
-                    image="/team/oliviu-sugar-gabor.jpg"
+                    image="/team/3.jpg"
                     alt="Prof. Oliviu Sugar-Gabor"
                     size="md"
                     containerClassName="bg-accent/10 border border-accent/20 ring-2 ring-accent/10"
@@ -268,7 +268,7 @@ export default function TeamSection() {
               <div className="relative h-full bg-surface/30 backdrop-blur-sm rounded-xl border border-white/10 p-5 hover:border-primary/30 transition-all duration-300">
                 <div className="flex items-start gap-4">
                   <TeamAvatar
-                    image="/team/pedram-asef.jpg"
+                    image="/team/4.jpg"
                     alt="Prof. Pedram Asef"
                     size="md"
                     containerClassName="bg-primary/10 border border-primary/20 ring-2 ring-primary/10"
@@ -323,7 +323,7 @@ export default function TeamSection() {
               <div className="relative h-full bg-surface/20 backdrop-blur-sm rounded-xl border border-white/10 p-5 hover:border-white/20 transition-all duration-300">
                 <div className="flex items-start gap-4">
                   <TeamAvatar
-                    image="/team/simon-chadowitz.jpg"
+                    image="/team/5.jpg"
                     alt="Simon Chadowitz"
                     size="sm"
                     containerClassName="bg-white/5 border border-white/10 ring-2 ring-white/5"
@@ -353,7 +353,7 @@ export default function TeamSection() {
               <div className="relative h-full bg-surface/20 backdrop-blur-sm rounded-xl border border-white/10 p-5 hover:border-white/20 transition-all duration-300">
                 <div className="flex items-start gap-4">
                   <TeamAvatar
-                    image="/team/saul-henry-lewin.jpg"
+                    image="/team/6.jpg"
                     alt="Saul Henry Lewin"
                     size="sm"
                     containerClassName="bg-white/5 border border-white/10 ring-2 ring-white/5"

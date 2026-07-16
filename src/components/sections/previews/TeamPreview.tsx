@@ -40,10 +40,10 @@ export default function TeamPreview() {
               {/* Team avatars arrangement */}
               <div className="flex items-center gap-2">
                 {[
-                  { name: "NB", photo: "/team/member-1.jpg" },
-                  { name: "PO", photo: "/team/member-2.jpg" },
-                  { name: "OS", photo: "/team/member-3.jpg" },
-                  { name: "PA", photo: "/team/member-4.jpg" },
+                  { name: "NB", photo: "/team/1.png" },
+                  { name: "PO", photo: "/team/2.webp" },
+                  { name: "OS", photo: "/team/3.jpg" },
+                  { name: "PA", photo: "/team/4.jpg" },
                 ].map((member, i) => (
                   <motion.div
                     key={member.name}
@@ -60,7 +60,7 @@ export default function TeamPreview() {
                       src={member.photo}
                       alt={`Team member ${member.name}`}
                       fill
-                      className="object-cover"
+                      className="object-cover object-top"
                     />
                   </motion.div>
                 ))}
